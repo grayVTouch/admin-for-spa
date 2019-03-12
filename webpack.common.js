@@ -12,7 +12,7 @@ module.exports = {
 		new CleanWebpackPlugin(['compiled']),
 		new HtmlWebpackPlugin({
 			filename: 'app.html' , 
-			template: 'template.html'
+			template: 'online.html'
 		}) , 
 		new VueLoaderPlugin() , 
 		new MiniCssExtractPlugin({

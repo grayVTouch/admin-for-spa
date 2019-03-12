@@ -22,10 +22,7 @@ export default {
         };
     } ,
     created () {
-        // 获取用户默认头像
-        this.getAvatar();
-        // 获取验证码
-        this.getCode();
+
     } ,
     methods: {
         check () {
@@ -44,22 +41,7 @@ export default {
                 this.form.code_key = data.data.key;
             });
         } ,
-        // 获取用户头像
-        getAvatar (once = true) {
-            if (!once && this.form.username.length <= 6) {
-                return ;
-            }
-            once = false;
-            if (!G.isNull(this.avatarAjax)) {
-                this.avatarAjax.native('abort');
-            }
-            this.avatarAjax = user.avatar(this.form.username , (data , code) => {
-                if (code != 200) {
-                    return ;
-                }
-                this.avatar = data.data;
-            });
-        } ,
+
         submit () {
             if (this.isRunning) {
                 return Prompt.alert('请求中...请耐心等待');

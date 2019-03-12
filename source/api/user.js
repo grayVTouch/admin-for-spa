@@ -1,5 +1,4 @@
-const logining = `${topContext.api}admin/logining`;
-const avatar = `${topContext.api}admin/avatar`;
+const logining = `${topContext.api}admin/AdminUser/login`;
 const info = `${topContext.api}admin/info`;
 
 export default {
