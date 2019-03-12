@@ -13,11 +13,11 @@ Object.assign(window , {
         topContext.ins.loading.show();
         const token = G.s.json('token');
         user.logout({
-            refresh_token: token.refresh_token
+            token
         } , (res , status) => {
             isRunningForLogout = false;
             topContext.ins.loading.hide();
-            if (status != 200) {
+            if (res.code != 200) {
                 Prompt.alert(res.msg);
                 return ;
             }
