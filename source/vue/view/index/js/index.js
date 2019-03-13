@@ -57,7 +57,7 @@ export default {
                 // 次要的图标类型，new || number || switch
                 icon: 'switch' ,
                 // 标识符，展开的项；1. 在元素里面设置 data-focus='y' +
-                id: [5] ,
+                id: [1] ,
                 // 初始状态，spread || shrink
                 status: 'shrink' ,
                 // 层级视觉显示效果
@@ -175,7 +175,7 @@ export default {
                     reject();
                     return ;
                 }
-                data = res.data;
+                let data = res.data;
                 // 针对 data 做一些数据过滤
                 const menu = this.getMenuData(data.user.role.priv);
                 this.$store.commit('menu' , menu);
