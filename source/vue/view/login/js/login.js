@@ -9,9 +9,6 @@ export default {
             form: {
                 username: '',
                 password: '',
-                code: '',
-                remember: 'n',
-                code_key: '',
             },
             error: {},
             remember: false,

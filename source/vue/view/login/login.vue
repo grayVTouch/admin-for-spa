@@ -20,7 +20,8 @@
                     <div class="btm" :class="getClass(error.password)">{{ error.password }}</div>
                 </div>
 
-                <template v-if="false">
+                <!--
+                    todo 后期如果要加 验证码 + 记住密码的时候在放开注释
                     <div class="line field code">
                         <div class="top">
                             <div class="left"><input type="text" v-model="form.code" @input="error.code = ''" placeholder="请输入验证码" class="input"></div>
@@ -35,7 +36,8 @@
                             <span slot="close">关闭</span>
                         </i-switch>
                     </div>
-                </template>
+                -->
+
 
                 <div class="line btns">
                     <button type="submit" class="btn-2">提交</button>
