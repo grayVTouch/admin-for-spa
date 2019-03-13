@@ -1,23 +1,14 @@
 const logout = `${topContext.api}AdminUser/logout`;
 const info = `${topContext.api}AdminUser/info`;
+const login = `${topContext.api}AdminUser/login`;
 
 export default {
     // 用户登录
     login (data , success , error) {
         G.ajax({
-            url: logining ,
+            url: login ,
             method: 'post' ,
             data ,
-            success ,
-            error
-        });
-    } ,
-
-    // 用户头像
-    avatar (username , success , error) {
-        return G.ajax({
-            url: `${avatar}/${username}` ,
-            method: 'get' ,
             success ,
             error
         });
@@ -26,8 +17,8 @@ export default {
     // 注销
     logout (data , success , error) {
         G.ajax({
-            url: logining ,
-            method: 'delete' ,
+            url: logout ,
+            method: 'post' ,
             direct: true ,
             data ,
             success ,
@@ -39,7 +30,7 @@ export default {
     info (success , error) {
         return G.ajax({
             url: info ,
-            method: 'get' ,
+            method: 'post' ,
             success ,
             error ,
         });
