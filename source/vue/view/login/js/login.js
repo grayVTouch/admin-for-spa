@@ -1,6 +1,4 @@
 import user from 'api/user.js';
-import misc from 'api/misc.js';
-
 
 export default {
     name: "v-login" ,
@@ -11,8 +9,6 @@ export default {
                 password: '',
             },
             error: {},
-            remember: false,
-            isRunning: false,
             code: '' ,
         };
     } ,
@@ -38,17 +34,17 @@ export default {
             this.isRunning = true;
             topContext.ins.loading.show();
             new Promise((resolve , reject) => {
-                user.login(this.form , (data , code) => {
+                user.login(this.form , (res , code) => {
                     resolve();
-                    if (code == 450) {
-                        this.error = data.data;
+                    if (res.code == 400) {
+                        this.error = res.data;
                         return ;
                     }
-                    if (code == 451) {
-                        this.$Message.error(data.msg);
+                    if (res.code == 450) {
+                        this.$Message.error(res.data);
                         return ;
                     }
-                    data = data.data;
+                    let data = res.data;
                     // 更新验证码
                     G.s.json('token' , data);
                     // 获取用户权限范围
