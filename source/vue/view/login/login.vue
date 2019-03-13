@@ -2,7 +2,7 @@
     <div class="container">
         <form class="form" @submit.prevent="submit">
             <div class="top">
-                <div class="image-container"><img :src="avatar" class="image"></div>
+                <div class="image-container"><img src="/static/image/avatar.jpg" class="image"></div>
             </div>
             <div class="btm">
                 <div class="line field">

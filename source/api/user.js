@@ -1,5 +1,5 @@
-const logining = `${topContext.api}admin/AdminUser/login`;
-const info = `${topContext.api}admin/info`;
+const logining = `${topContext.api}AdminUser/login`;
+const info = `${topContext.api}AdminUser/info`;
 
 export default {
     // 用户登录

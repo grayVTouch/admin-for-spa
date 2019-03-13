@@ -16,8 +16,6 @@ export default {
             error: {},
             remember: false,
             isRunning: false,
-            avatar: '',
-            avatarAjax: null,
             code: '' ,
         };
     } ,
@@ -30,16 +28,6 @@ export default {
                 status: true ,
                 msg: ''
             };
-        } ,
-        // 获取验证码
-        getCode () {
-            misc.code((data , status) => {
-                if (status != 200) {
-                    return ;
-                }
-                this.code = data.data.img;
-                this.form.code_key = data.data.key;
-            });
         } ,
 
         submit () {
@@ -56,18 +44,15 @@ export default {
                 user.login(this.form , (data , code) => {
                     resolve();
                     if (code == 450) {
-                        this.getCode();
                         this.error = data.data;
                         return ;
                     }
                     if (code == 451) {
-                        this.getCode();
                         this.$Message.error(data.msg);
                         return ;
                     }
                     data = data.data;
                     // 更新验证码
-                    this.getCode();
                     G.s.json('token' , data);
                     // 获取用户权限范围
                     this.$router.push({name: 'home'});
