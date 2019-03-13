@@ -46,7 +46,7 @@ export default {
                     }
                     let data = res.data;
                     // 更新验证码
-                    G.s.json('token' , data);
+                    G.s.set('token' , data);
                     // 获取用户权限范围
                     this.$router.push({name: 'home'});
                     // 跳转到首页

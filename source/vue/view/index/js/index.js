@@ -169,13 +169,13 @@ export default {
 
         // 获取用户相关数据
         info (resolve , reject) {
-            userApi.info((data , status) => {
-                if (status != 200) {
-                    this.$Message.error(data.msg);
+            userApi.info((res) => {
+                if (res.code != 200) {
+                    this.$Message.error(res.data);
                     reject();
                     return ;
                 }
-                data = data.data;
+                data = res.data;
                 // 针对 data 做一些数据过滤
                 const menu = this.getMenuData(data.user.role.priv);
                 this.$store.commit('menu' , menu);

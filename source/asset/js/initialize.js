@@ -4,6 +4,12 @@
  * *********************
  */
 
+G.ajax.opened = function(){
+    // 设置 Authorization 头部
+    this.native('setRequestHeader' , 'Authorization' , G.s.get('token'));
+    return true;
+};
+
 // 拦截 网络/登录状态 变更
 G.ajax.responded = function(res , status){
     if (status == 0 && !window.navigator.onLine) {
@@ -11,7 +17,6 @@ G.ajax.responded = function(res , status){
         return false;
     }
     if (res.code == 401) {
-        console.log('退出登录');
         logout();
         return false;
     }

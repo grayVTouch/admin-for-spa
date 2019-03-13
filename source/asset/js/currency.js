@@ -11,7 +11,7 @@ Object.assign(window , {
         }
         isRunningForLogout = true;
         topContext.ins.loading.show();
-        const token = G.s.json('token');
+        const token = G.s.get('token');
         user.logout({
             token
         } , (res , status) => {
