@@ -1,4 +1,4 @@
-const logining = `${topContext.api}AdminUser/login`;
+const logout = `${topContext.api}AdminUser/logout`;
 const info = `${topContext.api}AdminUser/info`;
 
 export default {

@@ -11,6 +11,7 @@ G.ajax.responded = function(res , status){
         return false;
     }
     if (res.code == 401) {
+        console.log('退出登录');
         logout();
         return false;
     }

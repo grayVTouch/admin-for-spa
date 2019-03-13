@@ -18,7 +18,7 @@ Object.assign(window , {
             isRunningForLogout = false;
             topContext.ins.loading.hide();
             if (res.code != 200) {
-                Prompt.alert(res.msg);
+                Prompt.alert(res.data);
                 return ;
             }
             G.s.del('token');
