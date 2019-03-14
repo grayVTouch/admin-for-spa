@@ -4,18 +4,23 @@
         <div class="module-content">
             <form>
                 <table class="input-tb">
-                    <tr>
-                        <td>名称</td>
-                        <td>
-                            <input type="text" class="form-text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>上级分类</td>
-                        <td>
-
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>名称</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>上级分类</td>
+                            <td>
+                                <select v-model="form.article_type_id">
+                                    <option value="0">顶级分类</option>
+                                    
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </form>
         </div>
@@ -29,7 +34,7 @@
         name: "v-article-type" ,
         data () {
             return {
-                data: {} ,
+                form: {} ,
             };
         } ,
         created () {
@@ -39,7 +44,7 @@
                 if (res.code != 200) {
                     return this.$Message.error(res.data);
                 }
-                this.data = res;
+                this.form = res;
             });
         } ,
         mounted () {

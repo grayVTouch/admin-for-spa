@@ -23,4 +23,6 @@ export default {
             error
         });
     } ,
+
+    // 完整的文章分类列表
 };

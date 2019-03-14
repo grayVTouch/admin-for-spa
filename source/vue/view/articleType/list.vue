@@ -65,9 +65,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="page">
-                    <Page :total="page.total" size="small" show-total show-elevator />
-                </div>
+                <div class="page"></div>
             </div>
         </div>
 
