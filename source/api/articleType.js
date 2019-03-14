@@ -6,6 +6,7 @@ export default {
     list (data , success , error) {
         return G.ajax({
             url: list ,
+            data ,
             method: 'post' ,
             success ,
             error
@@ -16,6 +17,7 @@ export default {
     detail (data , success , error) {
         return G.ajax({
             url: detail ,
+            data ,
             method: 'post' ,
             success ,
             error
