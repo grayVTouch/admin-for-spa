@@ -1,0 +1,54 @@
+/**
+ * ******************
+ * 模块导航
+ * ******************
+ */
+.module-nav {
+    height: 60px;
+    line-height: 60px;
+}
+
+.module-nav:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.module-nav > * {
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.module-nav > .left {
+    float: left;
+    font-size: 20px;
+}
+
+.module-nav > .right {
+    float: right;
+}
+
+.module-nav > .left > .image {
+    width: 40px;
+    height: 40px;
+}
+
+.module-nav > .left > .cn {
+    color: white;
+}
+
+.module-nav > .left .delimiter {
+    color: #858585;
+}
+
+.module-nav > .left > .en {
+    color: white;
+}
+
+.module-nav > .right {
+    color: white;
+}

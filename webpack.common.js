@@ -16,8 +16,8 @@ module.exports = {
 		}) , 
 		new VueLoaderPlugin() , 
 		new MiniCssExtractPlugin({
-			filename: "css/[name].css" ,
-			chunkFilename: "css/[id].css"
+			filename: "[name].css" ,
+			chunkFilename: "[id].css"
 		}) ,
 	] , 
 	output: {
@@ -67,7 +67,7 @@ module.exports = {
 					{
                         loader: 'file-loader' ,
 						options: {
-                        	name: 'assets/font/[name].[ext]'
+                        	name: '[name].[ext]'
 						}
 					}
 				],

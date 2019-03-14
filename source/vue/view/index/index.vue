@@ -5,7 +5,7 @@
             <div class="top">
                 <div class="logo">
                     <div class="left"><img src="/static/image/avatar.jpg" class="image"></div>
-                    <div class="right">兴趣部落-升级版</div>
+                    <div class="right">通迅后台系统</div>
                 </div>
                 <div class="user">
                     <div class="top">
@@ -36,7 +36,7 @@
             <div class="mid" ref="infinite-classification">
                 <v-menu></v-menu>
             </div>
-            <div class="btm">兴趣部落</div>
+            <div class="btm">通迅后台系统</div>
         </div>
         <!-- right -->
         <div class="right">

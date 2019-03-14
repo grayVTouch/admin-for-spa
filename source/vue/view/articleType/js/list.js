@@ -11,7 +11,9 @@ export default {
             },
             // 数据列表
             data: [],
-            page: {}
+            page: {
+                total: 0 ,
+            }
         };
     } ,
     created () {
@@ -19,8 +21,20 @@ export default {
             if (res.code != 200) {
                 this.$Message.error(res.data);
             }
-
+            let data = res.data;
+            this.data = G.t.childrens(0 , data.data , {
+                id: 'id' ,
+                p_id: 'p_id'
+            } , false , true);
+            delete data.data;
+            this.page = {...data};
         });
+    } ,
+    mounted () {
+
+    } ,
+    components: {
+
     } ,
     methods: {
         // 用户提交

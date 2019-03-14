@@ -1,0 +1,26 @@
+/**
+ * ******************
+ * 模块全局设置
+ * ******************
+ */
+.module-container {
+
+}
+
+/**
+ * ******************
+ * 模块内容
+ * ******************
+ */
+.module-container > .module-content {
+    padding: 20px;
+    background-color: white;
+}
+
+.module-container > .module-content > * {
+    margin-bottom: 12px;
+}
+
+/*.module-container > .module-content > *:nth-last-of-type(1) {*/
+/*margin-bottom: 0;*/
+/*}*/

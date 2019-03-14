@@ -1,0 +1,17 @@
+
+
+.module-container > .module-content > .list {
+
+}
+
+.module-container > .module-content > .list > * {
+    margin-bottom: 12px;
+}
+
+.module-container > .module-content > .list > *:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+
+.module-container > .module-content > .list > .page {
+    text-align: center;
+}

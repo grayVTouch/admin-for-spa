@@ -49,7 +49,9 @@
 }
 
 .container > .right > .btm {
+    min-width: 1080px;
     min-height: 100%;
+    background-color: #777d8a;
 }
 
 .container > .right > .btm:before {
@@ -262,7 +264,7 @@
 }
 
 .container > .right > .btm {
-    background-color: #f3f3f3;
+
 }
 
 
@@ -441,10 +443,9 @@
  */
 .container > .right > .btm > .dynamic {
     padding: 20px;
-    background-color: #777d8a;
+    padding-top: 0;
 }
 
 .container > .right > .btm > .dynamic > .in {
-    padding: 20px;
-    background-color: white;
+
 }
