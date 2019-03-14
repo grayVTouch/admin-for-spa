@@ -37,6 +37,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 10;
     width: 100%;
     height: 80px;
     padding-left: 200px;
@@ -431,4 +432,19 @@
 .container > .right > .top > .c-top > .right > .user .functions .function .right {
     color: white;
     margin-left: 50px;
+}
+
+/**
+ * **************************
+ * 文档右边：底部
+ * **************************
+ */
+.container > .right > .btm > .dynamic {
+    padding: 20px;
+    background-color: #777d8a;
+}
+
+.container > .right > .btm > .dynamic > .in {
+    padding: 20px;
+    background-color: white;
 }

@@ -8,7 +8,6 @@
 
 <script>
     import item from './item.vue';
-    // import mapping from 'mapping/mapping.js';
 
     export default {
         name: "v-menu" ,
@@ -17,8 +16,10 @@
                 // mapping ,
             };
         } ,
+        created () {
+            console.log(this.$store.state.menu);
+        } ,
         mounted () {
-
         } ,
         components: {
             'v-item': item

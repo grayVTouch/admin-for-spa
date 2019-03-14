@@ -41,10 +41,10 @@ export default {
             let self = this;
             this.ins.tab = new MultipleTab(this.$refs['multiple-tab'] , {
                 ico: '/plugin/MultipleTab/image/icon.ico' ,
-                created (tab) {
-                    self.create(this , tab);
+                created (id) {
+                    self.create(this , id);
                 } ,
-                deleted (tab) {
+                deleted (id) {
 
                 } ,
             });
@@ -57,7 +57,7 @@ export default {
                 // 次要的图标类型，new || number || switch
                 icon: 'switch' ,
                 // 标识符，展开的项；1. 在元素里面设置 data-focus='y' +
-                id: [1] ,
+                id: [2] ,
                 // 初始状态，spread || shrink
                 status: 'shrink' ,
                 // 层级视觉显示效果
@@ -101,12 +101,11 @@ export default {
             });
         } ,
         // 创建内容
-        create (tabIns , tab) {
-            tab = G(tab);
-            var route = tab.data('route');
+        create (tab , id) {
+            var route = tab.attr(id , 'route');
             var div = document.createElement('div');
                 div = G(div);
-                div.data('id' , tab.data('id'));
+                div.data('id' , id);
             var render = document.createElement('div');
                 div.append(render);
             this.dom.con.append(div.get(0));
@@ -181,6 +180,7 @@ export default {
                 this.$store.commit('menu' , menu);
                 this.$store.commit('priv' , data.user.role.priv);
                 this.$store.commit('route' , data.route);
+
                 resolve();
             });
         } ,

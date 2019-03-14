@@ -71,7 +71,11 @@
                     </div>
                 </div>
             </div>
-            <div class="btm" ref="con"></div>
+            <div class="btm">
+                <div class="dynamic">
+                    <div class="in" ref="con"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
