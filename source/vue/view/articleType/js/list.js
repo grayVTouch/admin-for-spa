@@ -11,9 +11,6 @@ export default {
             },
             // 数据列表
             data: [],
-            page: {
-                total: 0 ,
-            }
         };
     } ,
     created () {
@@ -22,12 +19,10 @@ export default {
                 this.$Message.error(res.data);
             }
             let data = res.data;
-            this.data = G.t.childrens(0 , data.data , {
+            this.data = G.t.childrens(0 , data , {
                 id: 'id' ,
                 p_id: 'p_id'
             } , false , true);
-            delete data.data;
-            this.page = {...data};
         });
     } ,
     mounted () {

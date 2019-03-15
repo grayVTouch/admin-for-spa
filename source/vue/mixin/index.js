@@ -1,4 +1,5 @@
 export default {
+    store ,
     data () {
         return {
 

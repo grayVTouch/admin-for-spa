@@ -24,5 +24,5 @@ Object.assign(window , {
         plugin ,
         api ,
         ins: {}
-    }
+    } ,
 });

@@ -8,6 +8,7 @@ import 'asset/css/public.css';
 /**
  * 导入 js
  */
+import 'asset/js/business.js';
 import 'asset/js/global.js';
 import 'asset/js/subGlobal.js';
 import 'asset/js/currency.js';
@@ -36,7 +37,6 @@ new Vue({
     el: '#app' ,
     template: '<App />' ,
     router ,
-    store ,
     mounted () {
         // // 获取 state 数据
         // console.log('store.state 数据' , this.$store.state.name);

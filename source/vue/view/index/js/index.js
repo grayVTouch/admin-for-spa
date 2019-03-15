@@ -204,13 +204,6 @@ export default {
             route = this.findRouteByRoute(route);
             let topRoute = this.topRoute(route.id);
             return Vue.extend({
-                // 我也只是赋值了 store 变量
-                // 子项内容没有 vue-router，也就是说没有 $router $route 属性
-                // 子项需要自己维护一套相关参数
-                // 毕竟像 编辑 是需要传递参数
-                // 参数如何传递？
-                // 通过再挂载组件的时候传递
-                store ,
                 ...component ,
                 // 混入一些组件通用方法
                 mixins: [
