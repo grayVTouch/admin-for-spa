@@ -49,12 +49,6 @@
 <script>
     export default {
         name: "v-loading" ,
-        mounted () {
-            topContext.ins.loading = new Loading(this.$el , {
-                status: 'hide' ,
-                type: 'line-scale'
-            });
-        } ,
     }
 </script>
 

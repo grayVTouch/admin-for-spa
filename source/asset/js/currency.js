@@ -39,10 +39,9 @@ Object.assign(window , {
     // 请仅在当前项目使用
     vScroll (id , fn) {
         let dom = G('#' + id);
-        let container = G('#doc-right');
-        let val = dom.getDocOffsetVal('top');
-        let extra = 50;
-        val -= extra;
-        container.vScroll(topContext.animateDuration , val , fn);
+        let container = G(window);
+        let val = dom.getWindowOffsetVal('top');
+        console.log(val);
+        G.scrollTo(topContext.animateDuration , 'y' , 0 , val , fn);
     } ,
 });

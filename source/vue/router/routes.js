@@ -1,9 +1,11 @@
-import index from '_vue/view/index/index.vue';
-import login from '_vue/view/login/login.vue';
-import listForRole from '_vue/view/role/list.vue';
-import listForRoute from '_vue/view/route/list.vue';
-import listForArticleType from '_vue/view/articleType/list.vue';
-import articleType from '_vue/view/articleType/articleType.vue';
+import index from '../view/index/index.vue';
+import login from '../view/login/login.vue';
+import listForRole from '../view/role/list.vue';
+import listForRoute from '../view/route/list.vue';
+import listForArticleType from '../view/articleType/list.vue';
+import articleType from '../view/articleType/articleType.vue';
+import article from '../view/article/article.vue';
+import listForArticle from '../view/article/list.vue';
 
 export default [
     {
@@ -36,5 +38,18 @@ export default [
     {
         path: '/articleType/add' ,
         component: articleType
+    } ,
+
+    {
+        path: '/article/list' ,
+        component: listForArticle
+    } ,
+    {
+        path: '/article/edit' ,
+        component: article
+    } ,
+    {
+        path: '/article/add' ,
+        component: article
     } ,
 ];

@@ -1,6 +1,6 @@
 <template>
     <div class="app">
-        <v-loading></v-loading>
+        <v-loading ref="loading"></v-loading>
         <router-view></router-view>
     </div>
 </template>
@@ -8,7 +8,10 @@
 
     export default {
         mounted () {
-
+            topContext.ins.loading = new Loading(this.$refs.loading.$el , {
+                status: 'hide' ,
+                type: 'line-scale'
+            });
         } ,
         components: {
 

@@ -39,9 +39,13 @@
                                 <input type="checkbox" class="form-cbox select-all">
                             </th>
                             <th class="th-id">ID</th>
-                            <th class="th-name">名称</th>
-                            <th class="th-id">上级ID</th>
-                            <th class="th-time">时间</th>
+                            <th class="th-name">标题</th>
+                            <th class="th-name">来源</th>
+                            <th class="th-name">分类</th>
+                            <th class="th-weight">权重</th>
+                            <th class="th-status">是否隐藏</th>
+                            <th class="th-time">创建时间</th>
+                            <th class="th-time">更新时间</th>
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
@@ -51,11 +55,15 @@
                                 <input type="checkbox" class="form-cbox">
                             </td>
                             <td>{{ v.id }}</td>
-                            <td>{{ v.name }}</td>
-                            <td>{{ v.p_id }}</td>
+                            <td>{{ v.title }}</td>
+                            <td>{{ v.source }}</td>
+                            <td>{{ v.article_type ? v.article_type.name : '无' }}</td>
+                            <td>{{ v.weight }}</td>
+                            <td>{{ v.hidden }}</td>
                             <td>{{ v.create_time }}</td>
+                            <td>{{ v.update_time }}</td>
                             <td>
-                                <button type="button" class="btn-1" @click="location('/articleType/edit' , {id: v.id , mode: 'edit'})">编辑</button>
+                                <button type="button" class="btn-1" @click="location('/article/edit' , {id: v.id , mode: 'edit'})">编辑</button>
                                 <button type="button" class="btn-1">删除</button>
                             </td>
                         </tr>

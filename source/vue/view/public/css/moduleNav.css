@@ -50,5 +50,22 @@
 }
 
 .module-nav > .right {
-    color: white;
+    color: #e4e4e4;
+    font-size: 14px;
+}
+
+.module-nav > .right > * {
+
+}
+
+.module-nav > .right > .text {
+    cursor: pointer;
+}
+
+.module-nav > .right > .delimiter {
+    padding: 0 8px;
+}
+
+.module-nav > .right > *:nth-last-of-type(1) {
+    font-weight: bold;
 }

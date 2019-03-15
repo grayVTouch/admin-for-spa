@@ -7,14 +7,11 @@
             <span class="en">{{ topRoute.en }}</span>
         </div>
         <div class="right">
-
-            <breadcrumb>
-                <breadcrumb-item v-for="v in pos" @click="parent.location(v.route , null , '_self')">{{ v.name }}</breadcrumb-item>
-            </breadcrumb>
-
             <!-- 面包屑 -->
-            <span class="text">文章分类</span>
-            <span class="delimiter">数据测试</span>
+            <template v-for="(v,k) in pos">
+                <span class="text" @click="v.route != '' && v.route != $parent.route.route ? $parent.location(v.route) : null">{{ v.name }}</span>
+                <span class="delimiter" v-if="!(k == pos.length - 1)">/</span>
+            </template>
         </div>
     </div>
 </template>
@@ -33,8 +30,8 @@
                 required: true ,
                 default: []
             }
-        }
+        } ,
+        watch: {}
     }
 </script>
-
 <style scoped src="./css/moduleNav.css"></style>

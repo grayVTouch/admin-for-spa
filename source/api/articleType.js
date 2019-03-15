@@ -1,6 +1,7 @@
 const list = `${topContext.api}ArticleType/list`;
 const detail = `${topContext.api}ArticleType/detail`;
 const edit = `${topContext.api}ArticleType/edit`;
+const add = `${topContext.api}ArticleType/add`;
 
 export default {
     // 文章分类列表
@@ -29,6 +30,17 @@ export default {
     edit (data , success , error) {
         return G.ajax({
             url: edit ,
+            data ,
+            method: 'post' ,
+            success ,
+            error
+        });
+    } ,
+
+    // 添加
+    add (data , success , error) {
+        return G.ajax({
+            url: add ,
             data ,
             method: 'post' ,
             success ,

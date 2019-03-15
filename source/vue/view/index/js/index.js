@@ -1,7 +1,6 @@
 import menu from '../../public/menu.vue';
 import moduleNav from '../../public/moduleNav.vue';
-import userApi from 'api/user.js';
-import routeForVue from '_vue/router/routes.js';
+import routeForVue from '../../../router/routes.js';
 
 export default {
     name: "v-index" ,
@@ -178,13 +177,18 @@ export default {
         // 重新渲染
         reRender (id , route , param) {
             let curRoute = this.findRouteByRoute(route);
-            let topRoute = this.topRoute(_route.id);
+            let topRoute = this.topRoute(curRoute.id);
             let title = this.genTabName(topRoute , curRoute);
-            this.ins.tab.title(title);
+            this.ins.tab.title(id , title);
             // 更新标签内容
             // 重新渲染元素内容
             let container = this.item(id);
-            this.mount(container , id , route , param);
+                container = G(container);
+            // 清空内容
+            container.html('');
+            let div = document.createElement('div');
+            container.append(div);
+            this.mount(div , id , route , param);
         } ,
 
         // 新开一个标签页
@@ -223,7 +227,7 @@ export default {
                         } ,
                         methods: {
                             // 也跳跳转方法
-                            location (route , param , type = '_blank') {
+                            location (route , param , type = '_self') {
                                 // 目前仅有两种类型
                                 // _self 页面内重载
                                 // _blank 打开新的标签页
