@@ -74,7 +74,7 @@
                     </table>
                 </div>
                 <div class="page">
-                    <Page :total="page.total" size="small" show-elevator show-sizer />
+                    <Page :total="page.total" size="small" show-elevato @on-change="pageEvent" />
                 </div>
             </div>
         </div>

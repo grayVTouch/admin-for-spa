@@ -1,4 +1,3 @@
-import articleApi from 'api/articleType.js';
 
 export default {
     name: "v-list" ,

@@ -1,5 +1,3 @@
-import articleTypeApi from 'api/articleType.js';
-
 export default {
     name: "v-list" ,
     data () {
@@ -47,6 +45,7 @@ export default {
         } ,
         // 用户提交
         submit () {
+            this.form.page = 1;
             this.getData();
         } ,
 
@@ -54,9 +53,11 @@ export default {
         reset () {
             this.submit();
         } ,
-        // 获取层级
-        floor (data) {
 
-        } ,
+        // 分页事件
+        pageEvent (page) {
+            this.form.page = page;
+            this.submit();
+        }
     }
 }
