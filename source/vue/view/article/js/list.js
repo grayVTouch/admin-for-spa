@@ -1,4 +1,4 @@
-import articleTypeApi from 'api/articleType.js';
+import articleApi from 'api/articleType.js';
 
 export default {
     name: "v-list" ,
@@ -33,7 +33,7 @@ export default {
         getData () {
             this.ins.loading.show();
             // 用户列表
-            articleTypeApi.list(this.form , (res) => {
+            articleApi.list(this.form , (res) => {
                 this.ins.loading.hide();
                 if (res.code != 200) {
                     this.$Message.error(res.data);
