@@ -5,7 +5,6 @@ export default {
             form: {
                 id: '',
                 order: '',
-                page: 1
             },
             // 数据列表
             data: [],
@@ -45,7 +44,6 @@ export default {
         } ,
         // 用户提交
         submit () {
-            this.form.page = 1;
             this.getData();
         } ,
 
@@ -53,11 +51,5 @@ export default {
         reset () {
             this.submit();
         } ,
-
-        // 分页事件
-        pageEvent (page) {
-            this.form.page = page;
-            this.submit();
-        }
     }
 }
