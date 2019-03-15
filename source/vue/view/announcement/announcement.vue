@@ -13,14 +13,6 @@
                                 <span class="tip">{{ error.name }}</span>
                             </td>
                         </tr>
-                        <tr id="p_id" :class="getClass(error.p_id)">
-                            <td>上级分类</td>
-                            <td>
-                                <v-select class="form-select" v-model="form.p_id" :data="type" :hasTop="true" ></v-select>
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.p_id }}</span>
-                            </td>
-                        </tr>
                         <tr id="weight" :class="getClass(error.weight)">
                             <td>权重</td>
                             <td>

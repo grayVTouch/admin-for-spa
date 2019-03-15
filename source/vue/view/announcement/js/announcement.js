@@ -19,20 +19,10 @@ export default {
         };
     } ,
     created () {
-        // 获取所有文章分类
-        articleTypeApi.list(null , (res) => {
-            if (res.code != 200) {
-                this.$Message.error(res.data);
-                return ;
-            }
-            let data = res.data;
-            // 数据处理
-            this.type = G.t.childrens(0 , data , this.field , false , true);
-        });
         // 检查时编辑
         if (this.param.mode == 'edit') {
             // 获取当前正在编辑的文章分类
-            articleTypeApi.detail({
+            announcementApi.detail({
                 id: this.param.id
             } , (res) => {
                 if (res.code != 200) {
@@ -72,7 +62,7 @@ export default {
             this.isRunning = true;
             this.ins.loading.show();
             let self = this;
-            articleTypeApi[this.param.mode](this.form , (res) => {
+            announcementApi[this.param.mode](this.form , (res) => {
                 this.isRunning = false;
                 this.ins.loading.hide();
                 if (res.code == 400) {

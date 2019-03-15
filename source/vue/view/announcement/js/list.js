@@ -35,7 +35,7 @@ export default {
         getData () {
             this.ins.loading.show();
             // 用户列表
-            articleApi.list(this.form , (res) => {
+            announcementApi.list(this.form , (res) => {
                 this.ins.loading.hide();
                 if (res.code != 200) {
                     this.$Message.error(res.data);
