@@ -9,6 +9,9 @@ export default {
                 order: '',
                 page: 1
             },
+            page: {
+                total: 1
+            } ,
             // 数据列表
             data: [],
             ins: {} ,
@@ -39,7 +42,10 @@ export default {
                     this.$Message.error(res.data);
                 }
                 let data = res.data;
-                this.data = data;
+                this.data = data.data;
+                delete data.data;
+                this.page = data;
+                console.log(this.data);
             });
         } ,
         initialize () {

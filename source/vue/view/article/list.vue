@@ -74,13 +74,11 @@
                     </table>
                 </div>
                 <div class="page">
-                    <i-page :total="" size="small" show-elevator show-sizer />
+                    <Page :total="page.total" size="small" show-elevator show-sizer />
                 </div>
             </div>
         </div>
-
         <v-loading ref="loading"></v-loading>
-
     </div>
 </template>
 
