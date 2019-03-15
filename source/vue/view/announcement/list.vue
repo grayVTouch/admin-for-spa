@@ -29,7 +29,7 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
-                            <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
+                            <button type="button" class="btn-1" @click="location('/announcement/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
                     <table class="line-tb">
@@ -62,13 +62,13 @@
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="6">没有相关数据</td>
+                            <td colspan="7">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="page">
-                    <Page :total="page.total" :page-size="1" size="small" show-total show-elevator @on-change="pageEvent" />
+                    <Page :total="page.total" size="small" show-total show-elevator @on-change="pageEvent" />
                 </div>
             </div>
         </div>

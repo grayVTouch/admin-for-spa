@@ -76,12 +76,12 @@ export default {
                     return ;
                 }
                 layer.alert('操作成功' , {
-                    btn: ['继续' + this.param.mode == 'edit' ? '编辑' : '添加' , '分类列表'] ,
+                    btn: ['继续' + this.param.mode == 'edit' ? '编辑' : '添加' , '公告列表'] ,
                     btn1 () {
                         layer.closeAll();
                     } ,
                     btn2 () {
-                        self.location('/articleType/list' , null , '_self');
+                        self.location('/announcement/list' , null , '_self');
                     }
                 });
             });

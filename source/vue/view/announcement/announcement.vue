@@ -5,30 +5,34 @@
             <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
-                        <tr id="name" :class="getClass(error.name)">
-                            <td>名称</td>
+                        <tr id="pos" :class="getClass(error.pos)">
+                            <td>位置</td>
                             <td>
-                                <input type="text" class="form-text" v-model="form.name">
+                                <input type="text" class="form-text" v-model="form.pos">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.name }}</span>
+                                <span class="tip">{{ error.pos }}</span>
+                            </td>
+                        </tr>
+                        <tr id="text" :class="getClass(error.text)">
+                            <td>内容</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.text">
+                                <span class="necessary">*</span>
+                                <span class="tip">{{ error.text }}</span>
+                            </td>
+                        </tr>
+                        <tr id="link" :class="getClass(error.link)">
+                            <td>链接</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.link">
+                                <span class="necessary">*</span>
+                                <span class="tip">{{ error.link }}</span>
                             </td>
                         </tr>
                         <tr id="weight" :class="getClass(error.weight)">
                             <td>权重</td>
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
-                            </td>
-                        </tr>
-                        <tr id="hidden">
-                            <td>是否隐藏</td>
-                            <td>
-                                <radio-group v-model="form.hidden">
-                                    <radio v-for="(v,k) in $store.state.business.bool_str" :label="k" :key="k">
-                                        <span>{{ v }}</span>
-                                    </radio>
-                                </radio-group>
                                 <span class="necessary">*</span>
                                 <span class="tip">{{ error.weight }}</span>
                             </td>
