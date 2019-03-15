@@ -2,7 +2,7 @@
     <div class="module-container">
         <module-nav :topRoute="topRoute" :pos="pos"></module-nav>
         <div class="module-content">
-            <form>
+            <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
                         <tr>
@@ -29,6 +29,11 @@
                                         <span>{{ v }}</span>
                                     </radio>
                                 </radio-group>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn-2">提交</button>
                             </td>
                         </tr>
                     </tbody>
@@ -59,6 +64,7 @@
             'v-select': select
         } ,
         created () {
+            // 获取所有文章分类
             articleTypeApi.list(null , (res) => {
                 if (res.code != 200) {
                     this.$Message.error(res.data);
@@ -68,6 +74,10 @@
                 // 数据处理
                 this.type = G.t.childrens(0 , data , this.field , false , true);
             });
+            if () {
+
+            }
+            // 获取当前正在编辑的文章分类
             articleTypeApi.detail({
                 id: this.param.id
             } , (res) => {
@@ -77,6 +87,9 @@
                 let data = res.data;
                 this.form = data;
             });
+        } ,
+        submit () {
+
         } ,
     }
 </script>
