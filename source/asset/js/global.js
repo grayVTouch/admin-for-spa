@@ -23,6 +23,8 @@ Object.assign(window , {
         host ,
         plugin ,
         api ,
-        ins: {}
+        ins: {} ,
+        // 动画时间
+        animateDuration: 300
     } ,
 });

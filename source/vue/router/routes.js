@@ -33,4 +33,8 @@ export default [
         path: '/articleType/edit' ,
         component: articleType
     } ,
+    {
+        path: '/articleType/add' ,
+        component: articleType
+    } ,
 ];

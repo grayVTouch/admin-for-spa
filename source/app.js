@@ -6,48 +6,57 @@ import 'asset/css/iviewReset.css';
 import 'asset/css/public.css';
 
 /**
- * 导入 js
+ * **************************
+ * 辅助 js
+ * **************************
  */
 import 'asset/js/business.js';
+
+/**
+ * 初始化 js
+ */
 import 'asset/js/global.js';
 import 'asset/js/subGlobal.js';
 import 'asset/js/currency.js';
 import 'asset/js/initialize.js';
 
+/**
+ * *****************
+ * http 请求
+ * *****************
+ */
+import 'asset/js/api.js';
 
-import App from '_vue/view/App.vue';
+/**
+ * ****************
+ * 注册组件
+ * ****************
+ */
+import 'asset/js/component.js';
 
+/**
+ * *************
+ * 全局混入
+ * *************
+ */
+import 'asset/js/mixin.js';
+
+/**
+ * *********************
+ * iview ui 框架
+ * *********************
+ */
 import 'iview.js';
-import mixin from '_vue/mixin';
+
 
 /**
  * **************
- * 全局组件
+ * 初始化代码
  * **************
  */
-import loading from '_vue/view/public/loading.vue';
-
-// 全局混入
-Vue.mixin(mixin);
-
-// 注册全局组建
-Vue.component('v-loading' , loading);
-
 new Vue({
     el: '#app' ,
-    template: '<App />' ,
-    router ,
-    mounted () {
-        // // 获取 state 数据
-        // console.log('store.state 数据' , this.$store.state.name);
-        // // 获取 getter 过滤后数据
-        // console.log('store.getter 数据' , this.$store.getters.name);
-        // // 派发事件
-        // this.$store.dispatch('name' , 'nihao' , 'henhao' , 'feichanghao');
-    } ,
-    components: {
-        App
-    }
+    template: '<v-app></v-app>'
 });
 
 // 登录页 和 后台首页的切

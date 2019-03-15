@@ -1,5 +1,3 @@
-import user from 'api/user.js';
-
 export default {
     name: "v-login" ,
     data () {
@@ -34,7 +32,7 @@ export default {
             this.isRunning = true;
             topContext.ins.loading.show();
             new Promise((resolve , reject) => {
-                user.login(this.form , (res , code) => {
+                userApi.login(this.form , (res , code) => {
                     resolve();
                     if (res.code == 400) {
                         this.error = res.data;

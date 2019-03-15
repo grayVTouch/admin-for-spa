@@ -1,5 +1,7 @@
-import router from '_vue/router';
-import store from '_vue/store';
+import router from '../../vue/router';
+import store from '../../vue/store';
+
+
 
 Object.assign(window , {
     router ,

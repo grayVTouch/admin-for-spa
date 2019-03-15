@@ -7,9 +7,14 @@
             <span class="en">{{ topRoute.en }}</span>
         </div>
         <div class="right">
+
             <breadcrumb>
                 <breadcrumb-item v-for="v in pos" @click="parent.location(v.route , null , '_self')">{{ v.name }}</breadcrumb-item>
             </breadcrumb>
+
+            <!-- 面包屑 -->
+            <span class="text">文章分类</span>
+            <span class="delimiter">数据测试</span>
         </div>
     </div>
 </template>

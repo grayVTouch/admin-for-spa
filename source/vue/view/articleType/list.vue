@@ -29,7 +29,7 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
-                            <button type="button" class="btn-1">添加</button>
+                            <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
                     <table class="line-tb">
@@ -55,7 +55,7 @@
                             <td>{{ v.p_id }}</td>
                             <td>{{ v.create_time }}</td>
                             <td>
-                                <button type="button" class="btn-1" @click="location('/articleType/edit' , {id: v.id})">编辑</button>
+                                <button type="button" class="btn-1" @click="location('/articleType/edit' , {id: v.id , mode: 'edit'})">编辑</button>
                                 <button type="button" class="btn-1">删除</button>
                             </td>
                         </tr>

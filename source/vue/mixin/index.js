@@ -1,5 +1,6 @@
 export default {
     store ,
+    router ,
     data () {
         return {
 

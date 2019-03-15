@@ -5,7 +5,7 @@
             <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
-                        <tr>
+                        <tr :class="getClass(error.phone)">
                             <td>名称</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.name">
@@ -43,56 +43,6 @@
     </div>
 </template>
 
-<script>
-    import articleTypeApi from 'api/articleType.js';
-    import select from '../public/select.vue';
-
-    export default {
-        name: "v-article-type" ,
-        data () {
-            return {
-                form: {
-                } ,
-                type: [] ,
-                field: {
-                    id: 'id' ,
-                    p_id: 'p_id'
-                } ,
-            };
-        } ,
-        components: {
-            'v-select': select
-        } ,
-        created () {
-            // 获取所有文章分类
-            articleTypeApi.list(null , (res) => {
-                if (res.code != 200) {
-                    this.$Message.error(res.data);
-                    return ;
-                }
-                let data = res.data;
-                // 数据处理
-                this.type = G.t.childrens(0 , data , this.field , false , true);
-            });
-            if () {
-
-            }
-            // 获取当前正在编辑的文章分类
-            articleTypeApi.detail({
-                id: this.param.id
-            } , (res) => {
-                if (res.code != 200) {
-                    return this.$Message.error(res.data);
-                }
-                let data = res.data;
-                this.form = data;
-            });
-        } ,
-        submit () {
-
-        } ,
-    }
-</script>
-
+<script src="./js/articleType.js"></script>
 <style scoped src="../public/css/public.css"></style>
-<style scoped></style>
+<style scoped src="./css/articleType.css"></style>
