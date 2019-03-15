@@ -3,9 +3,15 @@ import login from '../view/login/login.vue';
 import listForRole from '../view/role/list.vue';
 import listForRoute from '../view/route/list.vue';
 import listForArticleType from '../view/articleType/list.vue';
+
+import listForArticle from '../view/article/list.vue';
 import articleType from '../view/articleType/articleType.vue';
 import article from '../view/article/article.vue';
-import listForArticle from '../view/article/list.vue';
+
+import listForAnnouncement from '../view/announcement/list.vue';
+import announcement from '../view/announcement/announcement.vue';
+
+
 
 export default [
     {
@@ -51,5 +57,18 @@ export default [
     {
         path: '/article/add' ,
         component: article
+    } ,
+
+    {
+        path: '/announcement/list' ,
+        component: listForAnnouncement
+    } ,
+    {
+        path: '/announcement/edit' ,
+        component: announcement
+    } ,
+    {
+        path: '/announcement/add' ,
+        component: announcement
     } ,
 ];
