@@ -73,7 +73,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="page"></div>
+                <div class="page">
+                    <i-page :total="" size="small" show-elevator show-sizer />
+                </div>
             </div>
         </div>
 
