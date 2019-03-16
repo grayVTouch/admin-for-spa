@@ -63,7 +63,7 @@
                             <td>{{ v.create_time }}</td>
                             <td>
                                 <button type="button" class="btn-1" @click="location('/app/edit' , {id: v.id , mode: 'edit'})">编辑</button>
-                                <button type="button" class="btn-1">删除</button>
+                                <button type="button" class="btn-1" @click="del(v.id)">删除</button>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">

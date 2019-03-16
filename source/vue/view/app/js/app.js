@@ -4,6 +4,7 @@ export default {
         return {
             form: {
                 weight: 0 ,
+                is_app: 0 ,
             } ,
             isRunning: false ,
             // 错误消息

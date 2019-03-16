@@ -28,7 +28,7 @@
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.thumb" v-if="param.mode == 'edit' && !form.thumb" class="init-show-image" />
+                                        <img :src="form.thumb" v-if="param.mode == 'edit' && form.thumb" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'>
                                         <!-- 图片上传项目：旧 -->
