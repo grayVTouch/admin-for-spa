@@ -15,6 +15,9 @@ export default {
             // 错误消息
             error: {} ,
             ins: {} ,
+            callback: {
+                image: null
+            }
         };
     } ,
     created () {
@@ -33,6 +36,7 @@ export default {
         }
     } ,
     mounted () {
+        let self = this;
         // 加载层
         this.ins.loading = new Loading(this.$refs.loading.$el , {
             status: 'hide' ,
@@ -45,13 +49,12 @@ export default {
             mode: 'override' ,
             url:  `${topContext.api}Image/save` ,
             field: 'image' ,
-            success (json) {
-                let data = JSON.parse(json);
-                if (data.code != '000') {
-                    layer.msg(data.msg);
+            success (res) {
+                if (res.code != 200) {
+                    layer.alert(res.data);
                     return ;
                 }
-                data = data.data;
+                let data = res.data;
                 if (G.isFunction(self.callback.image)) {
                     self.callback.image(data);
                 }
