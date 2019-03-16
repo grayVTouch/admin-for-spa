@@ -13,30 +13,101 @@
                                 <span class="tip">{{ error.name }}</span>
                             </td>
                         </tr>
-                        <tr id="p_id" :class="getClass(error.p_id)">
-                            <td>上级分类</td>
-                            <td>
-                                <v-select class="form-select" v-model="form.p_id" :data="type" :hasTop="true" ></v-select>
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.p_id }}</span>
+                        <tr>
+                            <td>封面/td>
+                            <td ref="image-container">
+                                <div class='upload-image'>
+                                    <div class='select-images'>
+                                        <div class="upload-show">
+                                            <div class="image-line"><img src="" class="image upload-image-btn" /><span class="selected-count hide">10</span></div>
+                                            <div class="text-line">请选择要上传的图片</div>
+                                            <div class="clear-selected" title="清空已选择的图片"><img src="" class="image" /></div>
+                                            <input type='file' name='upload_images' multiple="multiple" class='upload-images-input'  />
+                                        </div>
+                                        <div class="tip">这边是提示内容</div>
+                                    </div>
+                                    <!-- 预置显示图片 -->
+                                    <div class="init-show-image-list">
+                                        <img :src="form.thumb" v-if="param.mode == 'edit' && !form.thumb" class="init-show-image" />
+                                    </div>
+                                    <div class='preview-images hide'>
+                                        <!-- 图片上传项目：旧 -->
+                                        <div class="image-item" data-filename="sama-96.jpg">
+                                            <div class="img"><img src="http://qp333com.oss-cn-hangzhou.aliyuncs.com/7peishang.com/avatar/2017-11-10/bf07531ad5dd288afc93bab47ee8d258.jpg" class="image"></div>
+                                            <div class="close"><img src="/UploadImages/Images/delete_unfocus.png" data-focus="/UploadImages/Images/delete_focus.png" data-unfocus="/UploadImages/Images/delete_unfocus.png" class="image"></div>
+                                            <div class="progress hide">
+                                                <div class="p-total">
+                                                    <div class="p-cur"></div>
+                                                </div>
+                                            </div>
+                                            <div class="msg hide">
+                                                <div class="msg-in">成功</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 待上传列表 -->
+                                    <div class="upload-image-list hide">
+                                        <div class="upload-title">待上传列表</div>
+                                        <div class="image-list">
+                                            <div class="list-content list-title">
+                                                <div class="item div-preview">图片预览</div>
+                                                <div class="item div-type">类型</div>
+                                                <div class="item div-size">大小</div>
+                                                <div class="item div-speed">速度</div>
+                                                <div class="item div-status">状态</div>
+                                                <div class="item div-opr">操作</div>
+                                            </div>
+                                            <div class="list-content list-body"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
+                        <tr id="ios_link" :class="getClass(error.ios_link)">
+                            <td>ios 链接</td>
+                            <td>
+                                <input type="number" step="0" class="form-text" v-model="form.ios_link">
+                                <span class="necessary"></span>
+                                <span class="tip">{{ error.ios_link }}</span>
+                            </td>
+                        </tr>
+                        <tr id="android_link" :class="getClass(error.android_link)">
+                            <td>android 链接</td>
+                            <td>
+                                <input type="number" step="0" class="form-text" v-model="form.android_link">
+                                <span class="necessary"></span>
+                                <span class="tip">{{ error.android_link }}</span>
+                            </td>
+                        </tr>
+                        <tr id="ios_wakeup_link" :class="getClass(error.ios_wakeup_link)">
+                            <td>ios唤醒链接</td>
+                            <td>
+                                <input type="number" step="0" class="form-text" v-model="form.ios_wakeup_link">
+                                <span class="necessary"></span>
+                                <span class="tip">{{ error.ios_wakeup_link }}</span>
+                            </td>
+                        </tr>
+                        <tr id="android_wakeup_link" :class="getClass(error.android_wakeup_link)">
+                            <td>android 唤醒链接</td>
+                            <td>
+                                <input type="number" step="0" class="form-text" v-model="form.android_wakeup_link">
+                                <span class="necessary"></span>
+                                <span class="tip">{{ error.android_wakeup_link }}</span>
+                            </td>
+                        </tr>
+                        <tr id="link" :class="getClass(error.link)">
+                            <td>外部链接</td>
+                            <td>
+                                <input type="number" step="0" class="form-text" v-model="form.link">
+                                <span class="necessary"></span>
+                                <span class="tip">{{ error.link }}</span>
+                            </td>
+                        </tr>
+
                         <tr id="weight" :class="getClass(error.weight)">
                             <td>权重</td>
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
-                            </td>
-                        </tr>
-                        <tr id="hidden">
-                            <td>是否隐藏</td>
-                            <td>
-                                <radio-group v-model="form.hidden">
-                                    <radio v-for="(v,k) in $store.state.business.bool_str" :label="k" :key="k">
-                                        <span>{{ v }}</span>
-                                    </radio>
-                                </radio-group>
                                 <span class="necessary">*</span>
                                 <span class="tip">{{ error.weight }}</span>
                             </td>

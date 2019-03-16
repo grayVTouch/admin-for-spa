@@ -7,7 +7,6 @@ export default {
                 weight: 0 ,
                 hidden: 'n'
             } ,
-            type: [] ,
             field: {
                 id: 'id' ,
                 p_id: 'p_id'
@@ -19,16 +18,6 @@ export default {
         };
     } ,
     created () {
-        // 获取所有文章分类
-        articleTypeApi.list(null , (res) => {
-            if (res.code != 200) {
-                this.$Message.error(res.data);
-                return ;
-            }
-            let data = res.data;
-            // 数据处理
-            this.type = G.t.childrens(0 , data , this.field , false , true);
-        });
         // 检查时编辑
         if (this.param.mode == 'edit') {
             // 获取当前正在编辑的文章分类
@@ -48,6 +37,25 @@ export default {
         this.ins.loading = new Loading(this.$refs.loading.$el , {
             status: 'hide' ,
             type: 'line-scale'
+        });
+
+        // 图片上传
+        this.ins.image = new UploadImage(this.$refs['image-container'] , {
+            pluginUrl: topContext.plugin + 'UploadImage/' ,
+            mode: 'override' ,
+            url:  `${topContext.api}Image/save` ,
+            field: 'image' ,
+            success (json) {
+                let data = JSON.parse(json);
+                if (data.code != '000') {
+                    layer.msg(data.msg);
+                    return ;
+                }
+                data = data.data;
+                if (G.isFunction(self.callback.image)) {
+                    self.callback.image(data);
+                }
+            }
         });
     } ,
     methods: {

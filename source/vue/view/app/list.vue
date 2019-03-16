@@ -37,11 +37,7 @@
                         <tr>
                             <th class="th-id">ID</th>
                             <th class="th-name">名称</th>
-                            <th class="th-name">ios 链接</th>
-                            <th class="th-name">android 链接</th>
-                            <th class="th-name">ios 唤醒链接</th>
-                            <th class="th-name">android 唤醒链接</th>
-                            <th class="th-name">外部链接</th>
+                            <th class="th-name">链接</th>
                             <th class="th-status">是否应用？</th>
                             <th class="th-weight">权重</th>
                             <th class="th-time">创建时间</th>
@@ -54,11 +50,14 @@
                                 <div class="row">{{ v.id }}</div>
                                 <div class="row"><img :src="v.thumb" class="image"></div>
                             </td>
-                            <td>{{ v.ios_link }}</td>
-                            <td>{{ v.android_link }}</td>
-                            <td>{{ v.ios_wakeup_link }}</td>
-                            <td>{{ v.android_wakeup_link }}</td>
-                            <td>{{ v.link }}</td>
+                            <td>{{ v.name }}</td>
+                            <td class="multiple-rows">
+                                <div class="row">【ios 链接】{{ v.ios_link }}</div>
+                                <div class="row">【android 链接】{{ v.android_link }}</div>
+                                <div class="row">【ios 唤醒链接】{{ v.ios_wakeup_link }}</div>
+                                <div class="row">【android 唤醒链接】{{ v.android_wakeup_link }}</div>
+                                <div class="row">【外部链接】{{ v.link }}</div>
+                            </td>
                             <td>{{ v.is_app }}</td>
                             <td>{{ v.weight }}</td>
                             <td>{{ v.create_time }}</td>
