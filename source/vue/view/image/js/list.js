@@ -35,7 +35,7 @@ export default {
         getData () {
             this.ins.loading.show();
             // 用户列表
-            appApi.list(this.form , (res) => {
+            imageApi.list(this.form , (res) => {
                 this.ins.loading.hide();
                 if (res.code != 200) {
                     this.$Message.error(res.data);
@@ -73,7 +73,7 @@ export default {
             }
             let idList = [id];
             this.ins.loading.show();
-            appApi.del({
+            imageApi.del({
                 id_list: idList
             } , (res) => {
                 this.isRunning = false;

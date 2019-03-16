@@ -5,7 +5,7 @@ export default {
             form: {
                 pos: '' ,
                 text: '' ,
-                link: '' ,
+                title: '' ,
                 weight: 0 ,
             } ,
             isRunning: false ,

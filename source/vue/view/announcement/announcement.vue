@@ -13,20 +13,20 @@
                                 <span class="tip">{{ error.pos }}</span>
                             </td>
                         </tr>
+                        <tr id="link" :class="getClass(error.title)">
+                            <td>标题</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.title">
+                                <span class="necessary">*</span>
+                                <span class="tip">{{ error.title }}</span>
+                            </td>
+                        </tr>
                         <tr id="text" :class="getClass(error.text)">
                             <td>内容</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.text">
                                 <span class="necessary">*</span>
                                 <span class="tip">{{ error.text }}</span>
-                            </td>
-                        </tr>
-                        <tr id="link" :class="getClass(error.link)">
-                            <td>链接</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.link">
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.link }}</span>
                             </td>
                         </tr>
                         <tr id="weight" :class="getClass(error.weight)">
