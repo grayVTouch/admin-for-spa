@@ -14,6 +14,8 @@ import announcement from '../view/announcement/announcement.vue';
 import listForApp from '../view/app/list.vue';
 import app from '../view/app/app.vue';
 
+import listForImage from '../view/image/list.vue';
+import image from '../view/image/image.vue';
 
 
 export default [
@@ -89,5 +91,19 @@ export default [
     {
         path: '/app/add' ,
         component: app
+    } ,
+
+    // 图片
+    {
+        path: '/image/list' ,
+        component: listForImage
+    } ,
+    {
+        path: '/image/edit' ,
+        component: image
+    } ,
+    {
+        path: '/image/add' ,
+        component: image
     } ,
 ];
