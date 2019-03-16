@@ -29,46 +29,46 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
-                            <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
+                            <button type="button" class="btn-1" @click="location('/app/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
                     <table class="line-tb">
                         <thead>
                         <tr>
-                            <th class="th-cbox">
-                                <input type="checkbox" class="form-cbox select-all">
-                            </th>
                             <th class="th-id">ID</th>
-                            <th class="th-name">标题</th>
-                            <th class="th-name">来源</th>
-                            <th class="th-name">分类</th>
+                            <th class="th-name">名称</th>
+                            <th class="th-name">ios 链接</th>
+                            <th class="th-name">android 链接</th>
+                            <th class="th-name">ios 唤醒链接</th>
+                            <th class="th-name">android 唤醒链接</th>
+                            <th class="th-name">外部链接</th>
+                            <th class="th-status">是否应用？</th>
                             <th class="th-weight">权重</th>
-                            <th class="th-status">是否隐藏</th>
                             <th class="th-time">创建时间</th>
-                            <th class="th-time">更新时间</th>
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="v in data" :key="v.id">
-                            <td>
-                                <input type="checkbox" class="form-cbox">
+                            <td class="multiple-rows">
+                                <div class="row">{{ v.id }}</div>
+                                <div class="row"><img :src="v.thumb" class="image"></div>
                             </td>
-                            <td>{{ v.id }}</td>
-                            <td>{{ v.title }}</td>
-                            <td>{{ v.source }}</td>
-                            <td>{{ v.article_type ? v.article_type.name : '无' }}</td>
+                            <td>{{ v.ios_link }}</td>
+                            <td>{{ v.android_link }}</td>
+                            <td>{{ v.ios_wakeup_link }}</td>
+                            <td>{{ v.android_wakeup_link }}</td>
+                            <td>{{ v.link }}</td>
+                            <td>{{ v.is_app }}</td>
                             <td>{{ v.weight }}</td>
-                            <td>{{ v.hidden }}</td>
                             <td>{{ v.create_time }}</td>
-                            <td>{{ v.update_time }}</td>
                             <td>
-                                <button type="button" class="btn-1" @click="location('/article/edit' , {id: v.id , mode: 'edit'})">编辑</button>
+                                <button type="button" class="btn-1" @click="location('/app/edit' , {id: v.id , mode: 'edit'})">编辑</button>
                                 <button type="button" class="btn-1">删除</button>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="6">没有相关数据</td>
+                            <td colspan="11">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>

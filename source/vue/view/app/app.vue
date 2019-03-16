@@ -54,6 +54,6 @@
     </div>
 </template>
 
-<script src="./js/article.js"></script>
+<script src="./js/app.js"></script>
 <style scoped src="../public/css/public.css"></style>
 <style scoped src="./css/app.css"></style>

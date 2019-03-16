@@ -14,6 +14,7 @@ export default {
             // 数据列表
             data: [],
             ins: {} ,
+            isRunning: false ,
         };
     } ,
     created () {
@@ -65,6 +66,27 @@ export default {
         pageEvent (page) {
             this.form.page = page;
             this.getData();
-        }
+        } ,
+
+        del (id) {
+            if (this.isRunning) {
+                layer.alert('请求中...请耐心等待');
+                return ;
+            }
+            let idList = [id];
+            this.ins.loading.show();
+            announcementApi.del({
+                id_list: idList
+            } , (res) => {
+                this.isRunning = false;
+                this.ins.loading.hide();
+                if (res.code != 200) {
+                    layer.alert(res.data);
+                    return ;
+                }
+                layer.msg('删除成功');
+                this.getData();
+            });
+        } ,
     }
 }

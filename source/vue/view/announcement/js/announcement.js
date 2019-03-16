@@ -3,14 +3,10 @@ export default {
     data () {
         return {
             form: {
-                p_id: 0 ,
+                pos: '' ,
+                text: '' ,
+                link: '' ,
                 weight: 0 ,
-                hidden: 'n'
-            } ,
-            type: [] ,
-            field: {
-                id: 'id' ,
-                p_id: 'p_id'
             } ,
             isRunning: false ,
             // 错误消息

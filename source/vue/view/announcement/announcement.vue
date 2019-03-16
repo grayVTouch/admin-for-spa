@@ -9,7 +9,7 @@
                             <td>位置</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.pos">
-                                <span class="necessary">*</span>
+                                <span class="necessary">*，已知的位置：app（app公告）</span>
                                 <span class="tip">{{ error.pos }}</span>
                             </td>
                         </tr>

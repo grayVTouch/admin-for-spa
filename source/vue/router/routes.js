@@ -11,6 +11,9 @@ import article from '../view/article/article.vue';
 import listForAnnouncement from '../view/announcement/list.vue';
 import announcement from '../view/announcement/announcement.vue';
 
+import listForApp from '../view/app/list.vue';
+import app from '../view/app/app.vue';
+
 
 
 export default [
@@ -46,6 +49,7 @@ export default [
         component: articleType
     } ,
 
+    // 文章
     {
         path: '/article/list' ,
         component: listForArticle
@@ -59,6 +63,7 @@ export default [
         component: article
     } ,
 
+    // 公告
     {
         path: '/announcement/list' ,
         component: listForAnnouncement
@@ -70,5 +75,19 @@ export default [
     {
         path: '/announcement/add' ,
         component: announcement
+    } ,
+
+    // 应用
+    {
+        path: '/app/list' ,
+        component: listForApp
+    } ,
+    {
+        path: '/app/edit' ,
+        component: app
+    } ,
+    {
+        path: '/app/add' ,
+        component: app
     } ,
 ];

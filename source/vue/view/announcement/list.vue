@@ -35,9 +35,9 @@
                     <table class="line-tb">
                         <thead>
                         <tr>
-                            <th class="th-cbox">
-                                <input type="checkbox" class="form-cbox select-all">
-                            </th>
+                            <!--<th class="th-cbox">-->
+                                <!--<input type="checkbox">-->
+                            <!--</th>-->
                             <th class="th-id">ID</th>
                             <th class="th-name">位置</th>
                             <th class="th-name">内容</th>
@@ -48,9 +48,9 @@
                         </thead>
                         <tbody>
                         <tr v-for="v in data" :key="v.id">
-                            <td>
-                                <input type="checkbox" class="form-cbox">
-                            </td>
+                            <!--<td>-->
+                                <!--<input type="checkbox">-->
+                            <!--</td>-->
                             <td>{{ v.id }}</td>
                             <td>{{ v.pos }}</td>
                             <td>{{ v.text }}</td>
@@ -58,11 +58,11 @@
                             <td>{{ v.create_time }}</td>
                             <td>
                                 <button type="button" class="btn-1" @click="location('/announcement/edit' , {id: v.id , mode: 'edit'})">编辑</button>
-                                <button type="button" class="btn-1">删除</button>
+                                <button type="button" class="btn-1" @click="del(v.id)">删除</button>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="7">没有相关数据</td>
+                            <td colspan="6">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>

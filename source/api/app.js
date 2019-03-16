@@ -1,8 +1,9 @@
-const list = `${topContext.api}Announcement/list`;
-const detail = `${topContext.api}Announcement/detail`;
-const edit = `${topContext.api}Announcement/edit`;
-const add = `${topContext.api}Announcement/add`;
-const del = `${topContext.api}Announcement/del`;
+const list = `${topContext.api}App/list`;
+const detail = `${topContext.api}App/detail`;
+const edit = `${topContext.api}App/edit`;
+const add = `${topContext.api}App/add`;
+const del = `${topContext.api}App/del`;
+const saveImage = `${topContext.api}App/saveImage`;
 
 export default {
     // 文章分类列表
@@ -53,6 +54,18 @@ export default {
     del (data , success , error) {
         return G.ajax({
             url: del ,
+            data ,
+            method: 'post' ,
+            success ,
+            error
+        });
+    } ,
+
+
+    // 删除
+    saveImage (data , success , error) {
+        return G.ajax({
+            url: saveImage ,
             data ,
             method: 'post' ,
             success ,
