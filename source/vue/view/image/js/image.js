@@ -126,7 +126,7 @@ export default {
                         layer.closeAll();
                     } ,
                     btn2 () {
-                        self.location('/app/list' , null , '_self');
+                        self.location('/image/list' , null , '_self');
                     }
                 });
             });
