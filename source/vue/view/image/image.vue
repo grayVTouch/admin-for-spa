@@ -5,16 +5,16 @@
             <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
-                        <tr id="name" :class="getClass(error.name)">
-                            <td>名称</td>
+                        <tr id="pos" :class="getClass(error.pos)">
+                            <td>位置</td>
                             <td>
-                                <input type="text" class="form-text" v-model="form.name">
+                                <input type="text" class="form-text" v-model="form.pos">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.name }}</span>
+                                <span class="tip">{{ error.pos }}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td>封面/td>
+                            <td>封面</td>
                             <td ref="image-container">
                                 <div class='upload-image'>
                                     <div class='select-images'>
@@ -63,60 +63,14 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr id="ios_link" :class="getClass(error.ios_link)">
-                            <td>ios 链接</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.ios_link">
-                                <span class="necessary"></span>
-                                <span class="tip">{{ error.ios_link }}</span>
-                            </td>
-                        </tr>
-                        <tr id="android_link" :class="getClass(error.android_link)">
-                            <td>android 链接</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.android_link">
-                                <span class="necessary"></span>
-                                <span class="tip">{{ error.android_link }}</span>
-                            </td>
-                        </tr>
-                        <tr id="ios_wakeup_link" :class="getClass(error.ios_wakeup_link)">
-                            <td>ios唤醒链接</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.ios_wakeup_link">
-                                <span class="necessary"></span>
-                                <span class="tip">{{ error.ios_wakeup_link }}</span>
-                            </td>
-                        </tr>
-                        <tr id="android_wakeup_link" :class="getClass(error.android_wakeup_link)">
-                            <td>android 唤醒链接</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.android_wakeup_link">
-                                <span class="necessary"></span>
-                                <span class="tip">{{ error.android_wakeup_link }}</span>
-                            </td>
-                        </tr>
                         <tr id="link" :class="getClass(error.link)">
-                            <td>外部链接</td>
+                            <td>链接</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.link">
-                                <span class="necessary"></span>
+                                <span class="necessary">*</span>
                                 <span class="tip">{{ error.link }}</span>
                             </td>
                         </tr>
-
-                        <tr id="is_app">
-                            <td>是否app</td>
-                            <td>
-                                <radio-group v-model="form.is_app">
-                                    <radio v-for="(v,k) in $store.state.business.bool_int" :label="k" :key="k">
-                                        <span>{{ v }}</span>
-                                    </radio>
-                                </radio-group>
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.is_app }}</span>
-                            </td>
-                        </tr>
-
                         <tr id="weight" :class="getClass(error.weight)">
                             <td>权重</td>
                             <td>
