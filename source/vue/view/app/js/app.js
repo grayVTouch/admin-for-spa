@@ -44,13 +44,8 @@ export default {
             url:  `${topContext.api}Image/save` ,
             field: 'image' ,
             success (res) {
-                if (res.code != 200) {
-                    layer.alert(res.data);
-                    return ;
-                }
-                let data = res.data;
                 if (G.isFunction(self.callback.image)) {
-                    self.callback.image(data);
+                    self.callback.image(res);
                 }
             }
         });
@@ -110,6 +105,7 @@ export default {
                 return new Promise((resolve) => {
                     if (G.isUndefined(res)) {
                         resolve();
+                        return ;
                     }
                     if (res.code != 200) {
                         layer.msg(res.data);
