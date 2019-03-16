@@ -40,6 +40,7 @@
                             <!--</th>-->
                             <th class="th-id">ID</th>
                             <th class="th-name">位置</th>
+                            <th class="th-name">标题</th>
                             <th class="th-name">内容</th>
                             <th class="th-name">权重</th>
                             <th class="th-time">创建时间</th>
@@ -53,6 +54,7 @@
                             <!--</td>-->
                             <td>{{ v.id }}</td>
                             <td>{{ v.pos }}</td>
+                            <td>{{ v.title }}</td>
                             <td>{{ v.text }}</td>
                             <td>{{ v.weight }}</td>
                             <td>{{ v.create_time }}</td>
