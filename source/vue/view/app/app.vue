@@ -66,7 +66,7 @@
                         <tr id="ios_link" :class="getClass(error.ios_link)">
                             <td>ios 链接</td>
                             <td>
-                                <input type="number" step="0" class="form-text" v-model="form.ios_link">
+                                <input type="text" class="form-text" v-model="form.ios_link">
                                 <span class="necessary"></span>
                                 <span class="tip">{{ error.ios_link }}</span>
                             </td>
@@ -74,7 +74,7 @@
                         <tr id="android_link" :class="getClass(error.android_link)">
                             <td>android 链接</td>
                             <td>
-                                <input type="number" step="0" class="form-text" v-model="form.android_link">
+                                <input type="text" class="form-text" v-model="form.android_link">
                                 <span class="necessary"></span>
                                 <span class="tip">{{ error.android_link }}</span>
                             </td>
@@ -82,7 +82,7 @@
                         <tr id="ios_wakeup_link" :class="getClass(error.ios_wakeup_link)">
                             <td>ios唤醒链接</td>
                             <td>
-                                <input type="number" step="0" class="form-text" v-model="form.ios_wakeup_link">
+                                <input type="text" class="form-text" v-model="form.ios_wakeup_link">
                                 <span class="necessary"></span>
                                 <span class="tip">{{ error.ios_wakeup_link }}</span>
                             </td>
@@ -90,7 +90,7 @@
                         <tr id="android_wakeup_link" :class="getClass(error.android_wakeup_link)">
                             <td>android 唤醒链接</td>
                             <td>
-                                <input type="number" step="0" class="form-text" v-model="form.android_wakeup_link">
+                                <input type="text" class="form-text" v-model="form.android_wakeup_link">
                                 <span class="necessary"></span>
                                 <span class="tip">{{ error.android_wakeup_link }}</span>
                             </td>
@@ -98,9 +98,22 @@
                         <tr id="link" :class="getClass(error.link)">
                             <td>外部链接</td>
                             <td>
-                                <input type="number" step="0" class="form-text" v-model="form.link">
+                                <input type="text" class="form-text" v-model="form.link">
                                 <span class="necessary"></span>
                                 <span class="tip">{{ error.link }}</span>
+                            </td>
+                        </tr>
+
+                        <tr id="is_app">
+                            <td>是否app</td>
+                            <td>
+                                <radio-group v-model="form.is_app">
+                                    <radio v-for="(v,k) in $store.state.business.bool_int" :label="k" :key="k">
+                                        <span>{{ v }}</span>
+                                    </radio>
+                                </radio-group>
+                                <span class="necessary">*</span>
+                                <span class="tip">{{ error.is_app }}</span>
                             </td>
                         </tr>
 
