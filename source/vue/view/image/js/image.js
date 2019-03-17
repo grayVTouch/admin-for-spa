@@ -1,12 +1,11 @@
 export default {
-    name: "v-article-type" ,
+    name: "v-image" ,
     data () {
         return {
             form: {
                 weight: 0 ,
             } ,
             isRunning: false ,
-            // 错误消息
             error: {} ,
             ins: {} ,
             callback: {
@@ -22,7 +21,7 @@ export default {
                 id: this.param.id
             } , (res) => {
                 if (res.code != 200) {
-                    return this.$Message.error(res.data);
+                    return this.$Message.tip(res.data);
                 }
                 let data = res.data;
                 this.form = data;
@@ -75,8 +74,6 @@ export default {
             new Promise((resolve , reject) => {
                 // 上传基本数据
                 imageApi[this.param.mode](this.form , (res) => {
-                    this.isRunning = false;
-                    this.ins.loading.hide();
                     if (res.code == 400) {
                         this.error = res.data;
                         vScroll(firstKey(res.data));
@@ -84,13 +81,14 @@ export default {
                     }
                     if (res.code == 450) {
                         // 特殊错误
-                        this.$Message.error(res.data);
+                        this.$error(res.data);
                         return ;
                     }
                     this.form.id = res.data;
                     resolve();
                 });
             }).then(() => {
+                // 上传图片
                 return new Promise((resolve , reject) => {
                     if (this.ins.image.empty()) {
                         resolve();
@@ -108,7 +106,7 @@ export default {
                         return ;
                     }
                     if (res.code != 200) {
-                        layer.msg(res.data);
+                        this.$msg(res.data);
                         resolve();
                     }
                     let data = res.data;
@@ -119,9 +117,9 @@ export default {
                     } , resolve);
                 });
             }).then(() => {
-                this.isRunning = false;
-                layer.alert('操作成功' , {
-                    btn: ['继续' + this.param.mode == 'edit' ? '编辑' : '添加' , '应用列表'] ,
+                // 提示成功
+                this.$success('操作成功' , {
+                    btn: ['继续' + (this.param.mode == 'edit' ? '编辑' : '添加') , '图片列表'] ,
                     btn1 () {
                         layer.closeAll();
                     } ,
@@ -129,6 +127,10 @@ export default {
                         self.location('/image/list' , null , '_self');
                     }
                 });
+            }).finally(() => {
+                // 更新状态
+                this.isRunning = false;
+                this.ins.loading.hide();
             });
         } ,
     }

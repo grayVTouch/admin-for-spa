@@ -14,6 +14,16 @@ Object.assign(window , {
         bool_str: {
             'n': '否' ,
             'y': '是'
+        } ,
+        // 公告-位置
+        pos: {
+            announcement: {
+                app: 'app公告'
+            } ,
+            image: {
+                news: '发现-焦点轮播图' ,
+                app: '发现-应用-焦点轮播图'
+            }
         }
     }
 });

@@ -66,6 +66,7 @@ export default {
             this.form.page = page;
             this.getData();
         } ,
+        // 删除选中项
         del (id) {
             if (this.isRunning) {
                 layer.alert('请求中...请耐心等待');
@@ -85,6 +86,10 @@ export default {
                 layer.msg('删除成功');
                 this.getData();
             });
+        } ,
+        // 选中所有
+        selectedAll () {
+
         } ,
     }
 }

@@ -63,13 +63,13 @@ export default {
                 // 次要的图标类型，new || number || switch
                 icon: 'switch' ,
                 // 标识符，展开的项；1. 在元素里面设置 data-focus='y' +
-                id: [2] ,
+                id: [4] ,
                 // 初始状态，spread || shrink
                 status: 'shrink' ,
                 // 层级视觉显示效果
                 amount: 12 ,
                 // 同层级是否互斥
-                exclution: true ,
+                exclution: false ,
                 // 是否菜单也可被选中
                 menuFocus: true ,
                 // 点击项后是否选中

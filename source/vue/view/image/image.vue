@@ -8,9 +8,12 @@
                         <tr id="pos" :class="getClass(error.pos)">
                             <td>位置</td>
                             <td>
-                                <input type="text" class="form-text" v-model="form.pos">
+                                <i-select v-model="form.pos" style="width:300px">
+                                    <i-option v-for="(v,k) in $store.state.business.pos.image" :value="k" :key="k">{{ v }}</i-option>
+                                </i-select>
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.pos }}</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.pos }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -28,7 +31,7 @@
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.thumb" v-if="param.mode == 'edit' && form.thumb" class="init-show-image" />
+                                        <img :src="form.url" v-if="param.mode == 'edit' && form.url" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'>
                                         <!-- 图片上传项目：旧 -->
@@ -68,7 +71,8 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.link">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.link }}</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.link }}</span>
                             </td>
                         </tr>
                         <tr id="weight" :class="getClass(error.weight)">
@@ -76,7 +80,8 @@
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
+                                <span class="tip">默认：0，仅允许输入整数</span>
+                                <span class="msg">{{ error.weight }}</span>
                             </td>
                         </tr>
                         <tr>
