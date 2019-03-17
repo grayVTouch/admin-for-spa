@@ -5,28 +5,33 @@
             <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
-                        <tr id="pos" :class="getClass(error.pos)">
-                            <td>位置</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.pos">
-                                <span class="necessary">*，已知的位置：app（app公告）</span>
-                                <span class="tip">{{ error.pos }}</span>
-                            </td>
-                        </tr>
                         <tr id="link" :class="getClass(error.title)">
                             <td>标题</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.title">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.title }}</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.title }}</span>
+                            </td>
+                        </tr>
+                        <tr id="pos" :class="getClass(error.pos)">
+                            <td>位置</td>
+                            <td>
+                                <i-select v-model="form.pos" style="width: 300px">
+                                    <i-option v-for="(v,k) in $store.state.business.pos.announcement" :key="k" :value="k">{{ v }}</i-option>
+                                </i-select>
+                                <span class="necessary">*</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.pos }}</span>
                             </td>
                         </tr>
                         <tr id="text" :class="getClass(error.text)">
                             <td>内容</td>
                             <td>
-                                <input type="text" class="form-text" v-model="form.text">
+                                <div ref="editor"></div>
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.text }}</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.text }}</span>
                             </td>
                         </tr>
                         <tr id="weight" :class="getClass(error.weight)">
@@ -34,7 +39,8 @@
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
+                                <span class="tip">默认：0，仅允许整数</span>
+                                <span class="msg">{{ error.weight }}</span>
                             </td>
                         </tr>
                         <tr>

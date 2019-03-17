@@ -5,16 +5,12 @@
     </div>
 </template>
 <script>
-
     export default {
         mounted () {
             topContext.ins.loading = new Loading(this.$refs.loading.$el , {
                 status: 'hide' ,
                 type: 'line-scale'
             });
-        } ,
-        components: {
-
         } ,
     };
 </script>

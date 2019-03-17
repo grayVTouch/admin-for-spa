@@ -8,26 +8,12 @@ export default {
                 title: '' ,
                 weight: 0 ,
             } ,
+            api: announcementApi ,
             isRunning: false ,
             // 错误消息
             error: {} ,
             ins: {} ,
         };
-    } ,
-    created () {
-        // 检查时编辑
-        if (this.param.mode == 'edit') {
-            // 获取当前正在编辑的文章分类
-            announcementApi.detail({
-                id: this.param.id
-            } , (res) => {
-                if (res.code != 200) {
-                    return this.$Message.error(res.data);
-                }
-                let data = res.data;
-                this.form = data;
-            });
-        }
     } ,
     mounted () {
         // 加载层
@@ -35,8 +21,34 @@ export default {
             status: 'hide' ,
             type: 'line-scale'
         });
+
+        // 编辑器
+        this.initialize();
     } ,
     methods: {
+        initialize () {
+            this.initEditor();
+            // 检查时编辑
+            if (this.param.mode == 'edit') {
+                // 获取当前正在编辑的文章分类
+                this.api.detail({
+                    id: this.param.id
+                } , (res) => {
+                    if (res.code != 200) {
+                        return this.$error(res.data);
+                    }
+                    let data = res.data;
+                    this.form = data;
+                    this.ins.editor.txt.html(this.form.text);
+                });
+            }
+        } ,
+        initEditor() {
+            this.ins.editor = new wangEditor(this.$refs.editor);
+            this.ins.editor.customConfig.uploadImgShowBase64 = true;
+            // this.ins.editor.customConfig.uploadImgServer = '/upload';
+            this.ins.editor.create();
+        } ,
         check (data) {
             return {
                 status: true ,
@@ -55,10 +67,11 @@ export default {
                 vScroll(filter.field);
                 return ;
             }
+            this.form.text = this.ins.editor.txt.html();
             this.isRunning = true;
             this.ins.loading.show();
             let self = this;
-            announcementApi[this.param.mode](this.form , (res) => {
+            this.api[this.param.mode](this.form , (res) => {
                 this.isRunning = false;
                 this.ins.loading.hide();
                 if (res.code == 400) {
@@ -68,11 +81,11 @@ export default {
                 }
                 if (res.code == 450) {
                     // 特殊错误
-                    this.$Message.error(res.data);
+                    this.$error(res.data);
                     return ;
                 }
-                layer.alert('操作成功' , {
-                    btn: ['继续' + this.param.mode == 'edit' ? '编辑' : '添加' , '公告列表'] ,
+                this.$success('操作成功' , {
+                    btn: ['继续' + (this.param.mode == 'edit' ? '编辑' : '添加') , '公告列表'] ,
                     btn1 () {
                         layer.closeAll();
                     } ,

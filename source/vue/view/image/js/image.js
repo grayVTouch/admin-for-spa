@@ -10,18 +10,19 @@ export default {
             ins: {} ,
             callback: {
                 image: null
-            }
+            } ,
+            api: imageApi
         };
     } ,
     created () {
         // 检查时编辑
         if (this.param.mode == 'edit') {
             // 获取当前正在编辑的文章分类
-            imageApi.detail({
+            this.api.detail({
                 id: this.param.id
             } , (res) => {
                 if (res.code != 200) {
-                    return this.$Message.tip(res.data);
+                    return this.$msg(res.data);
                 }
                 let data = res.data;
                 this.form = data;
@@ -73,16 +74,20 @@ export default {
             let self = this;
             new Promise((resolve , reject) => {
                 // 上传基本数据
-                imageApi[this.param.mode](this.form , (res) => {
-                    if (res.code == 400) {
-                        this.error = res.data;
-                        vScroll(firstKey(res.data));
-                        return ;
-                    }
-                    if (res.code == 450) {
-                        // 特殊错误
-                        this.$error(res.data);
-                        return ;
+                this.api[this.param.mode](this.form , (res) => {
+                    if (res.code != 200) {
+                        this.isRunning = false;
+                        this.ins.loading.hide();
+                        if (res.code == 400) {
+                            this.error = res.data;
+                            vScroll(firstKey(res.data));
+                            return ;
+                        }
+                        if (res.code == 450) {
+                            // 特殊错误
+                            this.$error(res.data);
+                            return ;
+                        }
                     }
                     this.form.id = res.data;
                     resolve();
@@ -111,7 +116,7 @@ export default {
                     }
                     let data = res.data;
                     // 更新
-                    imageApi.saveImage({
+                    this.api.saveImage({
                         id: this.form.id ,
                         ...data
                     } , resolve);

@@ -1,4 +1,3 @@
-
 export default {
     name: "v-list" ,
     data () {
@@ -14,14 +13,14 @@ export default {
             // 数据列表
             data: [],
             ins: {} ,
-            isRunning: false ,
+            idList: [] ,
+            api: announcementApi ,
+            dom: {}
         };
     } ,
-    created () {
-
-    } ,
     mounted () {
-        // 加载层
+        this.dom.tbody = G(this.$refs.tbody);
+        // 最高优先级：加载层
         this.ins.loading = new Loading(this.$refs.loading.$el , {
             status: 'hide' ,
             type: 'line-scale'
@@ -29,26 +28,27 @@ export default {
 
         this.initialize();
     } ,
-    components: {
-
-    } ,
     methods: {
+        initialize () {
+            this.getData();
+        } ,
         getData () {
             this.ins.loading.show();
             // 用户列表
-            announcementApi.list(this.form , (res) => {
+            this.api.list(this.form , (res) => {
                 this.ins.loading.hide();
                 if (res.code != 200) {
-                    this.$Message.error(res.data);
+                    this.$msg(res.data);
                 }
                 let data = res.data;
                 this.data = data.data;
                 delete data.data;
                 this.page = data;
-                console.log(this.data);
             });
         } ,
-        initialize () {
+        // 分页事件
+        pageEvent (page) {
+            this.form.page = page;
             this.getData();
         } ,
         // 用户提交
@@ -61,32 +61,114 @@ export default {
         reset () {
             this.submit();
         } ,
-
-        // 分页事件
-        pageEvent (page) {
-            this.form.page = page;
-            this.getData();
-        } ,
-
-        del (id) {
+        // 删除选中项
+        del () {
+            if (this.idList.length < 1) {
+                this.$error('您尚未选择待删除的项！');
+                return ;
+            }
             if (this.isRunning) {
                 layer.alert('请求中...请耐心等待');
                 return ;
             }
-            let idList = [id];
             this.ins.loading.show();
-            announcementApi.del({
-                id_list: idList
+            this.api.del({
+                id_list: G.jsonEncode(this.idList)
             } , (res) => {
                 this.isRunning = false;
                 this.ins.loading.hide();
                 if (res.code != 200) {
-                    layer.alert(res.data);
+                    this.$error(res.data);
                     return ;
                 }
-                layer.msg('删除成功');
+                this.idList = [];
+                this.$success('删除成功');
                 this.getData();
             });
         } ,
-    }
+
+        // 删除选中项
+        delTarget (id) {
+            this.addId(id);
+            this.del();
+        } ,
+
+        // 选择事件
+        selectEvent (e) {
+            let tar = G(e.currentTarget);
+            let id = tar.data('id');
+            let cbox = G('.c-box' , tar.get(0));
+            let checked = cbox.native('checked');
+            if (checked) {
+                this.unselectedLine(id);
+            } else {
+                this.selectedLine(id);
+            }
+        } ,
+
+        // 选中所有
+        selectAllEvent (e) {
+            let tar = G(e.currentTarget);
+            let checked = tar.native('checked');
+            let trs = this.dom.tbody.children();
+            trs.each((dom) => {
+                dom = G(dom);
+                let id = dom.data('id');
+                if (checked) {
+                    this.selectedLine(id);
+                } else {
+                    this.unselectedLine(id);
+                }
+            });
+        } ,
+
+        // 选中行
+        selectedLine (id) {
+            let trs = this.dom.tbody.children({
+                tagName: 'tr'
+            });
+            for (let i = 0; i < trs.length; ++i)
+            {
+                let cur = trs.jump(i , true);
+                if (cur.data('id') == id) {
+                    cur.addClass('focus');
+                    let cbox = G('.c-box' , cur.get(0)).native('checked' , true);
+                    this.addId(id);
+                }
+            }
+        } ,
+
+        // 取消选中
+        unselectedLine (id) {
+            let trs = this.dom.tbody.children({
+                tagName: 'tr'
+            });
+            for (let i = 0; i < trs.length; ++i)
+            {
+                let cur = trs.jump(i , true);
+                if (cur.data('id') == id) {
+                    cur.removeClass('focus');
+                    let cbox = G('.c-box' , cur.get(0)).native('checked' , false);
+                    this.delId(id);
+                }
+            }
+        } ,
+
+        // 添加
+        addId (id) {
+            if (this.idList.indexOf(id) != -1) {
+                return ;
+            }
+            this.idList.push(id);
+        } ,
+
+        // 删除
+        delId (id) {
+            let index = -1;
+            if ((index = this.idList.indexOf(id)) == -1) {
+                return ;
+            }
+            this.idList.splice(index , 1);
+        } ,
+    } ,
 }

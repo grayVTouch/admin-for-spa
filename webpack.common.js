@@ -12,7 +12,7 @@ module.exports = {
 		new CleanWebpackPlugin(['compiled']),
 		new HtmlWebpackPlugin({
 			filename: 'app.html' , 
-			template: 'online.html'
+			template: 'template.html'
 		}) , 
 		new VueLoaderPlugin() , 
 		new MiniCssExtractPlugin({
@@ -84,10 +84,10 @@ module.exports = {
 			'iview.css': 'iview/dist/styles/iview.css' ,
 
 			// 目录别名
-            asset: path.resolve(__dirname , './source/asset') ,
-			_vue: path.resolve(__dirname , './source/vue') ,
-			api: path.resolve(__dirname , './source/api') ,
-			mapping: path.resolve(__dirname , './source/mapping') ,
+            // asset: path.resolve(__dirname , './source/asset') ,
+			// _vue: path.resolve(__dirname , './source/vue') ,
+			// api: path.resolve(__dirname , './source/api') ,
+			// mapping: path.resolve(__dirname , './source/mapping') ,
 
 			// view: path.resolve(__dirname , './source/vue/view') ,
 			// router: path.resolve(__dirname , './source/vue/router') ,

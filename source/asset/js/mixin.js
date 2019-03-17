@@ -5,7 +5,6 @@
  */
 import mixin from '../../vue/mixin';
 
-
 /**
  * *****************
  * 初始化代码

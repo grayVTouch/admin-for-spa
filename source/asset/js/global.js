@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import mixin from './mixinOption.js';
+
+
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -27,4 +30,5 @@ Object.assign(window , {
         // 动画时间
         animateDuration: 300
     } ,
+    mixin ,
 });

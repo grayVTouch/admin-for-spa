@@ -70,7 +70,7 @@
                             <td>链接</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.link">
-                                <span class="necessary">*</span>
+                                <span class="necessary"></span>
                                 <span class="tip"></span>
                                 <span class="msg">{{ error.link }}</span>
                             </td>
@@ -79,7 +79,7 @@
                             <td>权重</td>
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
-                                <span class="necessary">*</span>
+                                <span class="necessary"></span>
                                 <span class="tip">默认：0，仅允许输入整数</span>
                                 <span class="msg">{{ error.weight }}</span>
                             </td>

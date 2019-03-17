@@ -1,4 +1,3 @@
-
 export default {
     name: "v-list" ,
     data () {
@@ -19,13 +18,9 @@ export default {
             dom: {}
         };
     } ,
-    created () {
-
-    } ,
     mounted () {
         this.dom.tbody = G(this.$refs.tbody);
-
-        // 加载层
+        // 最高优先级：加载层
         this.ins.loading = new Loading(this.$refs.loading.$el , {
             status: 'hide' ,
             type: 'line-scale'
@@ -33,17 +28,17 @@ export default {
 
         this.initialize();
     } ,
-    components: {
-
-    } ,
     methods: {
+        initialize () {
+            this.getData();
+        } ,
         getData () {
             this.ins.loading.show();
             // 用户列表
             this.api.list(this.form , (res) => {
                 this.ins.loading.hide();
                 if (res.code != 200) {
-                    this.$Message.error(res.data);
+                    this.$msg(res.data);
                 }
                 let data = res.data;
                 this.data = data.data;
@@ -51,7 +46,9 @@ export default {
                 this.page = data;
             });
         } ,
-        initialize () {
+        // 分页事件
+        pageEvent (page) {
+            this.form.page = page;
             this.getData();
         } ,
         // 用户提交
@@ -64,31 +61,28 @@ export default {
         reset () {
             this.submit();
         } ,
-
-        // 分页事件
-        pageEvent (page) {
-            this.form.page = page;
-            this.getData();
-        } ,
-
         // 删除选中项
         del () {
+            if (this.idList.length < 1) {
+                this.$error('您尚未选择待删除的项！');
+                return ;
+            }
             if (this.isRunning) {
                 layer.alert('请求中...请耐心等待');
                 return ;
             }
             this.ins.loading.show();
             this.api.del({
-                id_list: this.idList
+                id_list: G.jsonEncode(this.idList)
             } , (res) => {
                 this.isRunning = false;
                 this.ins.loading.hide();
                 if (res.code != 200) {
-                    layer.alert(res.data);
+                    this.$error(res.data);
                     return ;
                 }
                 this.idList = [];
-                layer.msg('删除成功');
+                this.$success('删除成功');
                 this.getData();
             });
         } ,
@@ -176,5 +170,5 @@ export default {
             }
             this.idList.splice(index , 1);
         } ,
-    }
+    } ,
 }

@@ -2,44 +2,44 @@
  * 导入 css 样式
  */
 import 'iview.css';
-import 'asset/css/iviewReset.css';
-import 'asset/css/public.css';
+import './asset/css/iviewReset.css';
+import './asset/css/public.css';
 
 /**
  * **************************
  * 辅助 js
  * **************************
  */
-import 'asset/js/business.js';
+import './asset/js/business.js';
 
 /**
  * 初始化 js
  */
-import 'asset/js/global.js';
-import 'asset/js/subGlobal.js';
-import 'asset/js/currency.js';
-import 'asset/js/initialize.js';
+import './asset/js/global.js';
+import './asset/js/subGlobal.js';
+import './asset/js/currency.js';
+import './asset/js/initialize.js';
 
 /**
  * *****************
  * http 请求
  * *****************
  */
-import 'asset/js/api.js';
-
-/**
- * ****************
- * 注册组件
- * ****************
- */
-import 'asset/js/component.js';
+import './asset/js/api.js';
 
 /**
  * *************
  * 全局混入
  * *************
  */
-import 'asset/js/mixin.js';
+import './asset/js/mixin.js';
+
+/**
+ * ****************
+ * 注册组件
+ * ****************
+ */
+import './asset/js/component.js';
 
 /**
  * *********************
@@ -47,7 +47,6 @@ import 'asset/js/mixin.js';
  * *********************
  */
 import 'iview.js';
-
 
 /**
  * **************

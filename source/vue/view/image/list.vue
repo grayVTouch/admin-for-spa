@@ -67,17 +67,17 @@
                             <td>{{ v.create_time }}</td>
                             <td>
                                 <button type="button" class="btn-1" @click.stop="location('/image/edit' , {id: v.id , mode: 'edit'})">编辑</button>
-                                <button type="button" class="btn-1" @click="del(v.id)">删除</button>
+                                <button type="button" class="btn-1" @click="delTarget(v.id)">删除</button>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="7">没有相关数据</td>
+                            <td colspan="8">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="page">
-                    <Page :total="page.total" :page-size="1" size="small" show-total show-elevator @on-change="pageEvent" />
+                    <Page :total="page.total" :page-size="page.per_page" size="small" show-total show-elevator @on-change="pageEvent" />
                 </div>
             </div>
         </div>
