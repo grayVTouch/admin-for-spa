@@ -72,7 +72,7 @@ export default {
             this.isRunning = true;
             this.ins.loading.show();
             let self = this;
-            this.api[this.param.mode](this.form , (res) => {
+            this.api[this.param.mode](G.formData(this.form) , (res) => {
                 this.isRunning = false;
                 this.ins.loading.hide();
                 if (res.code == 400) {
