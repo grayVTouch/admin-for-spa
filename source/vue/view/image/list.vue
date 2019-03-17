@@ -29,6 +29,7 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
+                            <button type="button" class="btn-1" @click="del">删除选中项</button>
                             <button type="button" class="btn-1" @click="location('/image/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
@@ -36,7 +37,7 @@
                         <thead>
                         <tr>
                             <th class="th-cbox">
-                                <input type="checkbox" @click="selectedAll">
+                                <input type="checkbox" @click="selectAllEvent">
                             </th>
                             <th class="th-id">ID</th>
                             <th class="th-name">位置</th>
@@ -47,16 +48,17 @@
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr v-for="v in data" :key="v.id" @click="selected(v.id)">
+                        <tbody ref="tbody">
+                        <tr v-for="v in data" :key="v.id" :data-id="v.id" @click="selectEvent">
+                            <td><input type="checkbox" class="c-box"></td>
                             <td class="multiple-rows">
                                 <div class="row">{{ v.id }}</div>
                                 <div class="row"><img :src="v.url" class="image"></div>
                             </td>
                             <td>{{ v.pos }}</td>
-                            <td>{{ v.platform }}</td>
+                            <td>{{ v.platform ? v.platform.name : '无' }}</td>
                             <td class="multiple-rows">
-                                <div class="row"><b>【名称】</b><span :title="v.name">{{ v.name }}</div>
+                                <div class="row"><b>【名称】</b><span :title="v.name">{{ v.name }}</span></div>
                                 <div class="row"><b>【mime】</b>{{ v.mime }}</div>
                                 <div class="row"><b>【size】</b>{{ v.size }}</div>
                                 <div class="row"><b>【url】</b>{{ v.url }}</div>
@@ -64,7 +66,7 @@
                             <td>{{ v.weight }}</td>
                             <td>{{ v.create_time }}</td>
                             <td>
-                                <button type="button" class="btn-1" @click="location('/image/edit' , {id: v.id , mode: 'edit'})">编辑</button>
+                                <button type="button" class="btn-1" @click.stop="location('/image/edit' , {id: v.id , mode: 'edit'})">编辑</button>
                                 <button type="button" class="btn-1" @click="del(v.id)">删除</button>
                             </td>
                         </tr>
