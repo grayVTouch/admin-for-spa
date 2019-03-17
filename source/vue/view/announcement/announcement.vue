@@ -5,15 +5,6 @@
             <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
-                        <tr id="link" :class="getClass(error.title)">
-                            <td>标题</td>
-                            <td>
-                                <input type="text" class="form-text" v-model="form.title">
-                                <span class="necessary">*</span>
-                                <span class="tip"></span>
-                                <span class="msg">{{ error.title }}</span>
-                            </td>
-                        </tr>
                         <tr id="pos" :class="getClass(error.pos)">
                             <td>位置</td>
                             <td>
@@ -23,6 +14,15 @@
                                 <span class="necessary">*</span>
                                 <span class="tip"></span>
                                 <span class="msg">{{ error.pos }}</span>
+                            </td>
+                        </tr>
+                        <tr id="link" :class="getClass(error.title)">
+                            <td>标题</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.title">
+                                <span class="necessary">*</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.title }}</span>
                             </td>
                         </tr>
                         <tr id="text" :class="getClass(error.text)">

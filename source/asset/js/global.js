@@ -14,8 +14,10 @@ Vue.config.productionTip = false;
 Vue.config.devtools = true;
 
 const host = 'http://chat_adm.t1.tuuz.cc/';
+// const host = '/';
 const plugin = `${host}plugin/`;
 const api = `${host}admin/`;
+const imageApiForwangEditor = `${api}Image/saveForWangEditor`;
 
 Object.assign(window , {
     Vue ,
@@ -28,7 +30,8 @@ Object.assign(window , {
         api ,
         ins: {} ,
         // 动画时间
-        animateDuration: 300
+        animateDuration: 300 ,
+        imageApiForwangEditor ,
     } ,
     mixin ,
 });

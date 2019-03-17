@@ -45,8 +45,9 @@ export default {
         } ,
         initEditor() {
             this.ins.editor = new wangEditor(this.$refs.editor);
-            this.ins.editor.customConfig.uploadImgShowBase64 = true;
-            // this.ins.editor.customConfig.uploadImgServer = '/upload';
+            // this.ins.editor.customConfig.uploadImgShowBase64 = true;
+            this.ins.editor.customConfig.uploadImgServer = topContext.imageApiForwangEditor;
+            this.ins.editor.customConfig.uploadFileName = 'image';
             this.ins.editor.create();
         } ,
         check (data) {
