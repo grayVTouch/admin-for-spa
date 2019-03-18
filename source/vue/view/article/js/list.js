@@ -190,7 +190,7 @@ export default {
             for (let i = 0; i < this.type.length; ++i)
             {
                 let cur = this.type[i];
-                option['btn' + i + 1] = (index) => {
+                option['btn' + (i + 1)] = (index) => {
                     layer.close(index);
                     if (this.captureRunning) {
                         layer.alert('请求中...请耐心等待');
