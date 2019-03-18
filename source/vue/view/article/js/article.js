@@ -162,12 +162,12 @@ export default {
             }).then(() => {
                 // 提示成功
                 this.$success('操作成功' , {
-                    btn: ['继续' + (this.param.mode == 'edit' ? '编辑' : '添加') , '图片列表'] ,
+                    btn: ['继续' + (this.param.mode == 'edit' ? '编辑' : '添加') , '文章列表'] ,
                     btn1 () {
                         layer.closeAll();
                     } ,
                     btn2 () {
-                        self.location('/image/list' , null , '_self');
+                        self.location('/article/list' , null , '_self');
                     }
                 });
             }).finally(() => {
