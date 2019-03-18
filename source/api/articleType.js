@@ -3,6 +3,7 @@ const detail = `${topContext.api}ArticleType/detail`;
 const edit = `${topContext.api}ArticleType/edit`;
 const add = `${topContext.api}ArticleType/add`;
 const del = `${topContext.api}ArticleType/del`;
+const all = `${topContext.api}ArticleType/all`;
 
 export default {
     // 文章分类列表
@@ -60,4 +61,16 @@ export default {
             error
         });
     } ,
+
+    // 删除
+    all (success , error) {
+        return G.ajax({
+            url: all ,
+            method: 'post' ,
+            success ,
+            error
+        });
+    } ,
+
+
 };

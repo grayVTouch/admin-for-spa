@@ -20,9 +20,9 @@ export default {
     } ,
     created () {
         // 获取所有文章分类
-        articleTypeApi.list(null , (res) => {
+        articleTypeApi.all((res) => {
             if (res.code != 200) {
-                this.$Message.error(res.data);
+                this.$msg(res.data);
                 return ;
             }
             let data = res.data;
