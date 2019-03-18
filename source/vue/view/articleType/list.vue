@@ -29,7 +29,7 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
-                            <button type="button" class="btn-1" @click="del">删除选中项</button>
+                            <button type="button" class="btn-1" @click="delSelected">删除选中项</button>
                             <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
@@ -46,8 +46,8 @@
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr v-for="v in data" :key="v.id" @click="selectEvent">
+                        <tbody ref="tbody">
+                        <tr v-for="v in data" :key="v.id" :data-id="v.id" @click="selectEvent">
                             <td>
                                 <input type="checkbox" class="c-box">
                             </td>

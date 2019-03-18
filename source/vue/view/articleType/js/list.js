@@ -62,35 +62,51 @@ export default {
             this.submit();
         } ,
         // 删除选中项
-        del () {
-            if (this.idList.length < 1) {
+        del (idList) {
+            if (idList.length < 1) {
                 this.$error('您尚未选择待删除的项！');
                 return ;
             }
-            if (this.isRunning) {
-                layer.alert('请求中...请耐心等待');
-                return ;
-            }
-            this.ins.loading.show();
-            this.api.del({
-                id_list: G.jsonEncode(this.idList)
-            } , (res) => {
-                this.isRunning = false;
-                this.ins.loading.hide();
-                if (res.code != 200) {
-                    this.$error(res.data);
+            let del = () => {
+                if (this.isRunning) {
+                    layer.alert('请求中...请耐心等待');
                     return ;
                 }
-                this.idList = [];
-                this.$success('删除成功');
-                this.getData();
+                this.ins.loading.show();
+                this.api.del({
+                    id_list: G.jsonEncode(idList)
+                } , (res) => {
+                    this.isRunning = false;
+                    this.ins.loading.hide();
+                    if (res.code != 200) {
+                        this.$error(res.data);
+                        return ;
+                    }
+                    this.idList = [];
+                    this.$success('删除成功');
+                    this.getData();
+                });
+            };
+            layer.alert('如果删除，将会连同子类一起删除，你确定删除吗？' , {
+                btn: ['确定' , '取消'] ,
+                btn1 (index) {
+                    layer.close(index);
+                    del();
+                } ,
+                btn2 (index) {
+                    layer.close(index);
+                } ,
             });
         } ,
 
         // 删除选中项
         delTarget (id) {
-            this.addId(id);
-            this.del();
+            this.del([id]);
+        } ,
+
+        // 删除所有
+        delSelected () {
+            this.del(this.idList);
         } ,
 
         // 选择事件
