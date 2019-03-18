@@ -29,7 +29,7 @@
                     <div class="component-title">
                         <div class="left">
                             数据列表
-                            <button type="button" class="btn-1" @click="delSelected">抓取聚合数据最新文章</button>
+                            <button type="button" class="btn-1" @click="capture">抓取聚合数据最新文章</button>
                         </div>
                         <div class="right">
                             <button type="button" class="btn-1" @click="delSelected">删除选中项</button>
@@ -65,7 +65,7 @@
                             <td>{{ v.title }}</td>
                             <td>{{ v.article_type ? v.article_type.name : '无' }}</td>
                             <td class="multiple-rows">
-                                <div class="row"><b>来源</b>{{ v.source }}</div>
+                                <div class="row"><b>【来源】</b>{{ v.source }}</div>
                                 <div class="row"><b>【权重】</b>{{ v.weight }}</div>
                             </td>
                             <td :class="v.hidden == 'y' ? 'red' : 'green'">{{ v.hidden_explain }}</td>
@@ -79,7 +79,7 @@
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="9">没有相关数据</td>
+                            <td colspan="8">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>

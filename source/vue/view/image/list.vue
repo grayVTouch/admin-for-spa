@@ -40,8 +40,7 @@
                                 <input type="checkbox" @click="selectAllEvent">
                             </th>
                             <th class="th-id">ID</th>
-                            <th class="th-name">位置</th>
-                            <th class="th-name">平台</th>
+                            <th class="th-name">信息</th>
                             <th class="th-name">图片</th>
                             <th class="th-weight">权重</th>
                             <th class="th-time">创建时间</th>
@@ -55,8 +54,10 @@
                                 <div class="row">{{ v.id }}</div>
                                 <div class="row"><img :src="v.url" class="image"></div>
                             </td>
-                            <td>{{ v.pos }}</td>
-                            <td>{{ v.platform ? v.platform.name : '无' }}</td>
+                            <td class="multiple-rows">
+                                <div class="row"><b>【位置】</b>{{ v.pos }}</div>
+                                <div class="row"><b>【平台】</b>{{ v.platform ? v.platform.name : '无' }}</div>
+                            </td>
                             <td class="multiple-rows">
                                 <div class="row"><b>【名称】</b><span :title="v.name">{{ v.name }}</span></div>
                                 <div class="row"><b>【mime】</b>{{ v.mime }}</div>
