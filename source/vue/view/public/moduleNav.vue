@@ -6,7 +6,7 @@
             <span class="delimiter">/</span>
             <span class="en">{{ topRoute.en }}</span>
             &nbsp;&nbsp;
-            <button class="btn-8" @click.prevent="$parent.location($parent.route.route , {param: $parent.param})">标签页刷新</button>
+            <button class="btn-8" @click.prevent="$parent.location($parent.route.route , $parent.param)">标签页刷新</button>
         </div>
         <div class="right">
             <!-- 面包屑 -->

@@ -86,7 +86,7 @@ export default {
                     return ;
                 }
                 layer.alert('操作成功' , {
-                    btn: ['继续' + this.param.mode == 'edit' ? '编辑' : '添加' , '分类列表'] ,
+                    btn: ['继续' + (this.param.mode == 'edit' ? '编辑' : '添加') , '分类列表'] ,
                     btn1 () {
                         layer.closeAll();
                     } ,

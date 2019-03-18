@@ -67,7 +67,7 @@
                     </table>
                 </div>
                 <div class="page">
-                    <Page :total="page.total" :page-size="page.per_page" show-elevator show-total />
+                    <Page :total="page.total" :page-size="page.per_page" size="small" show-elevator show-total />
                 </div>
             </div>
         </div>
