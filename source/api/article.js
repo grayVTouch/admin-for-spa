@@ -4,6 +4,7 @@ const edit = `${topContext.api}Article/edit`;
 const add = `${topContext.api}Article/add`;
 const saveImage = `${topContext.api}Article/saveImage`;
 const capture = `${topContext.api}Article/captureForJHData`;
+const del = `${topContext.api}Article/del`;
 
 export default {
     // 文章分类列表
@@ -65,6 +66,18 @@ export default {
     capture (data , success , error) {
         return G.ajax({
             url: capture ,
+            data ,
+            method: 'post' ,
+            success ,
+            error
+        });
+    } ,
+
+
+    // 删除
+    del (data , success , error) {
+        return G.ajax({
+            url: del ,
             data ,
             method: 'post' ,
             success ,

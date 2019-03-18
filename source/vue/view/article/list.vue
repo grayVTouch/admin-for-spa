@@ -51,7 +51,7 @@
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody ref="tbody">
                         <tr v-for="v in data" :key="v.id" :data-id="v.id">
                             <td>
                                 <input type="checkbox" class="c-box" @click="selectEvent">

@@ -70,17 +70,13 @@ export default {
         } ,
         // 删除选中项
         del (idList , fn) {
-            if (this.idList.length < 1) {
-                this.$error('您尚未选择待删除的项！');
-                return ;
-            }
             if (this.isRunning) {
                 layer.alert('请求中...请耐心等待');
                 return ;
             }
             this.ins.loading.show();
             this.api.del({
-                id_list: G.jsonEncode(this.idList)
+                id_list: G.jsonEncode(idList)
             } , (res) => {
                 this.isRunning = false;
                 this.ins.loading.hide();
@@ -104,6 +100,10 @@ export default {
         } ,
 
         delSelected () {
+            if (this.idList.length < 1) {
+                this.$error('您尚未选择待删除的项！');
+                return ;
+            }
             this.del(this.idList , () => {
                 this.idList = [];
             });
