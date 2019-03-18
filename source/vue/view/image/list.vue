@@ -56,7 +56,7 @@
                             </td>
                             <td class="multiple-rows">
                                 <div class="row"><b>【位置】</b>{{ v.pos }}</div>
-                                <div class="row"><b>【平台】</b>{{ v.platform ? v.platform.name : '无' }}</div>
+                                <!--<div class="row"><b>【平台】</b>{{ v.platform ? v.platform.name : '无' }}</div>-->
                             </td>
                             <td class="multiple-rows">
                                 <div class="row"><b>【名称】</b><span :title="v.name">{{ v.name }}</span></div>

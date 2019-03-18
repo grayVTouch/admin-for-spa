@@ -29,7 +29,8 @@
                     <div class="component-title">
                         <div class="left">
                             数据列表
-                            <button type="button" class="btn-1" @click="capture">抓取聚合数据最新文章</button>
+                            &nbsp;&nbsp;
+                            <button type="button" class="btn-8" @click="capture">抓取聚合数据最新文章</button>
                         </div>
                         <div class="right">
                             <button type="button" class="btn-1" @click="delSelected">删除选中项</button>
@@ -52,9 +53,9 @@
                         </tr>
                         </thead>
                         <tbody ref="tbody">
-                        <tr v-for="v in data" :key="v.id" :data-id="v.id">
+                        <tr v-for="v in data" :key="v.id" :data-id="v.id" @click="selectEvent">
                             <td>
-                                <input type="checkbox" class="c-box" @click="selectEvent">
+                                <input type="checkbox" class="c-box">
                             </td>
                             <td class="multiple-rows">
                                 <div class="row"><b>【id】</b>{{ v.id }}</div>
