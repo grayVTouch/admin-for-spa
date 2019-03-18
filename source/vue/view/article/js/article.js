@@ -4,9 +4,9 @@ export default {
         return {
             form: {
                 weight: 0 ,
-                hidden: 0 ,
+                hidden: 'n' ,
                 content: '' ,
-                article_type_id: 0
+                article_type_id: '' ,
             } ,
             isRunning: false ,
             error: {} ,

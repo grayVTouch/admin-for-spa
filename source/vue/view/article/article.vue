@@ -95,7 +95,7 @@
                             <td>权重</td>
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
-                                <span class="necessary">*</span>
+                                <span class="necessary"></span>
                                 <span class="tip">默认：0</span>
                                 <span class="msg">{{ error.weight }}</span>
                             </td>
