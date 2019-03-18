@@ -2,6 +2,7 @@ const list = `${topContext.api}Article/list`;
 const detail = `${topContext.api}Article/detail`;
 const edit = `${topContext.api}Article/edit`;
 const add = `${topContext.api}Article/add`;
+const saveImage = `${topContext.api}Article/saveImage`;
 
 export default {
     // 文章分类列表
@@ -41,6 +42,17 @@ export default {
     add (data , success , error) {
         return G.ajax({
             url: add ,
+            data ,
+            method: 'post' ,
+            success ,
+            error
+        });
+    } ,
+
+    // 删除
+    saveImage (data , success , error) {
+        return G.ajax({
+            url: saveImage ,
             data ,
             method: 'post' ,
             success ,

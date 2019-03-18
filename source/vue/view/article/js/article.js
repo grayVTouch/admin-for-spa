@@ -5,6 +5,8 @@ export default {
             form: {
                 weight: 0 ,
                 hidden: 0 ,
+                content: '' ,
+                article_type_id: 0
             } ,
             isRunning: false ,
             error: {} ,
@@ -67,8 +69,10 @@ export default {
                         return this.$msg(res.data);
                     }
                     let data = res.data;
+                    let content = data.content ? data.content.content : '';
+                    delete data.content;
                     this.form = data;
-                    this.ins.editor.txt.html(this.form.content ? this.form.content.content : '');
+                    this.ins.editor.txt.html(this.form.content ? this.form.content : '');
                 });
             }
         } ,
@@ -101,6 +105,8 @@ export default {
                 vScroll(filter.field);
                 return ;
             }
+            // 设置内容
+            this.form.content = this.ins.editor.txt.html();
             this.isRunning = true;
             this.ins.loading.show();
             let self = this;
@@ -150,7 +156,7 @@ export default {
                     // 更新
                     this.api.saveImage({
                         id: this.form.id ,
-                        ...data
+                        image: data.url ,
                     } , resolve);
                 });
             }).then(() => {
