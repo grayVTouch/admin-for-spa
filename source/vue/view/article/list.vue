@@ -73,9 +73,10 @@
                                 <div class="row">【创建时间】{{ v.create_time }}</div>
                                 <div class="row">【更新时间】{{ v.update_time }}</div>
                             </td>
-                            <td>
-                                <button type="button" class="btn-1" @click="location('/article/edit' , {id: v.id , mode: 'edit'})">编辑</button>
-                                <button type="button" class="btn-1" @click="delTarget(v.id)">删除</button>
+                            <td class="multiple-rows">
+                                <div class="row"><button type="button" class="btn-1" @click="location('/article/edit' , {id: v.id , mode: 'edit'})">编辑</button></div>
+                                <div class="row"><button type="button" class="btn-1" :data-clipboard-text="v.content ? v.content.content : ''">复制文章内容</button></div>
+                                <div class="row"><button type="button" class="btn-1" @click="delTarget(v.id)">删除</button></div>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">

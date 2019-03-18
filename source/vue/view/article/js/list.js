@@ -47,6 +47,10 @@ export default {
                 this.data = data.data;
                 delete data.data;
                 this.page = data;
+                this.$nextTick(() => {
+                    // 定义剪贴板事件
+                    new ClipboardJS('.btn');
+                });
             });
         } ,
         // 分页事件
@@ -208,7 +212,8 @@ export default {
                             return ;
                         }
                         let data = res.data;
-                        let msg = `总记录数：${data.total}\n成功记录数：${data.success}\n失败记录数：${data.error}\n重复记录数：${data.repeat}`;
+                        let msg = `总记录数：${data.total}<br>成功记录数：${data.success}<br>失败记录数：${data.error}<br>重复记录数：${data.repeat}`;
+                        this.submit();
                         this.$success(msg)
                     });
                 };
@@ -219,4 +224,5 @@ export default {
             layer.alert('请选择要抓取的文章类型' , option);
         } ,
     } ,
+
 }
