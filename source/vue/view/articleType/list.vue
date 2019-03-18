@@ -29,6 +29,7 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
+                            <button type="button" class="btn-1" @click="del">删除选中项</button>
                             <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
@@ -36,7 +37,7 @@
                         <thead>
                         <tr>
                             <th class="th-cbox">
-                                <input type="checkbox" class="form-cbox select-all">
+                                <input type="checkbox" @click="selectAllEvent">
                             </th>
                             <th class="th-id">ID</th>
                             <th class="th-name">名称</th>
@@ -46,9 +47,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="v in data" :key="v.id">
+                        <tr v-for="v in data" :key="v.id" @click="selectEvent">
                             <td>
-                                <input type="checkbox" class="form-cbox">
+                                <input type="checkbox" class="c-box">
                             </td>
                             <td>{{ v.id }}</td>
                             <td>{{ v.name }}</td>
@@ -56,7 +57,7 @@
                             <td>{{ v.create_time }}</td>
                             <td>
                                 <button type="button" class="btn-1" @click="location('/articleType/edit' , {id: v.id , mode: 'edit'})">编辑</button>
-                                <button type="button" class="btn-1">删除</button>
+                                <button type="button" class="btn-1" @click="delTarget(v.id)">删除</button>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
@@ -65,7 +66,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="page"></div>
+                <div class="page">
+                    <Page :total="page.total" :page-size="page.per_page" show-elevator show-total />
+                </div>
             </div>
         </div>
 
