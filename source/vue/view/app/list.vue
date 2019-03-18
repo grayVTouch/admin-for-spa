@@ -36,6 +36,9 @@
                     <table class="line-tb">
                         <thead>
                         <tr>
+                            <th class="th-cbox">
+                                <input type="checkbox" @click="selectAllEvent">
+                            </th>
                             <th class="th-id">ID</th>
                             <th class="th-name">名称</th>
                             <th class="th-name">链接</th>
@@ -45,8 +48,11 @@
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr v-for="v in data" :key="v.id">
+                        <tbody ref="tbody">
+                        <tr v-for="v in data" :key="v.id" :data-id="v.id" @click="selectEvent">
+                            <td>
+                                <input type="checkbox" class="c-box">
+                            </td>
                             <td class="multiple-rows">
                                 <div class="row">{{ v.id }}</div>
                                 <div class="row"><img :src="v.thumb" class="image"></div>
@@ -68,7 +74,7 @@
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="11">没有相关数据</td>
+                            <td colspan="8">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>
