@@ -72,7 +72,7 @@
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="8">没有相关数据</td>
+                            <td colspan="7">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>

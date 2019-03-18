@@ -76,7 +76,7 @@
                             </td>
                             <td class="multiple-rows">
                                 <div class="row"><button type="button" class="btn-1" @click="location('/article/edit' , {id: v.id , mode: 'edit'})">编辑</button></div>
-                                <div class="row"><button type="button" class="btn-1" :data-clipboard-text="v.content ? v.content.content : ''">复制文章内容</button></div>
+                                <!--<div class="row"><button type="button" class="btn-1" :data-clipboard-text="v.content ? v.content.content : ''">复制文章内容</button></div>-->
                                 <div class="row"><button type="button" class="btn-1" @click="delTarget(v.id)">删除</button></div>
                             </td>
                         </tr>

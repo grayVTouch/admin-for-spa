@@ -64,10 +64,6 @@ export default {
 
         // 删除选中项
         del (idList , fn) {
-            if (this.idList.length < 1) {
-                this.$error('您尚未选择待删除的项！');
-                return ;
-            }
             if (this.isRunning) {
                 layer.alert('请求中...请耐心等待');
                 return ;
@@ -98,6 +94,10 @@ export default {
         } ,
 
         delSelected () {
+            if (this.idList.length < 1) {
+                this.$error('您尚未选择待删除的项！');
+                return ;
+            }
             this.del(this.idList , () => {
                 this.idList = [];
             });
