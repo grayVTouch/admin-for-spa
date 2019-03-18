@@ -16,7 +16,9 @@ export default {
             idList: [] ,
             api: articleApi ,
             dom: {} ,
-            type: ['头条' , '社会' , '国内' , '国际' , '娱乐' , '体育' , '军事' , '科技' , '财经' , '时尚']
+            type: ['头条' , '社会' , '国内' , '国际' , '娱乐' , '体育' , '军事' , '科技' , '财经' , '时尚'] ,
+            isRunning: false ,
+            captureRunning: false ,
         };
     } ,
     mounted () {
@@ -190,22 +192,31 @@ export default {
                 let cur = this.type[i];
                 option['btn' + i + 1] = (index) => {
                     layer.close(index);
+                    if (this.captureRunning) {
+                        layer.alert('请求中...请耐心等待');
+                        return ;
+                    }
+                    this.ins.loading.show();
+                    this.captureRunning = true;
                     this.api.capture({
                         type: cur
                     } , (res) => {
+                        this.ins.loading.hide();
+                        this.captureRunning = false;
                         if (res.code != 200) {
                             this.$error(res.data);
                             return ;
                         }
                         let data = res.data;
                         let msg = `总记录数：${data.total}\n成功记录数：${data.success}\n失败记录数：${data.error}\n重复记录数：${data.repeat}`;
+                        this.$success(msg)
                     });
                 };
             }
             option[this.type.length + 1] = (index) => {
                 layer.close(index);
             };
-            layer.alert('请选择要抓取的文章类型' , btn);
+            layer.alert('请选择要抓取的文章类型' , option);
         } ,
     } ,
 }
