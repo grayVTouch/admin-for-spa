@@ -72,7 +72,7 @@ export default {
                     let content = data.content ? data.content.content : '';
                     delete data.content;
                     this.form = data;
-                    this.ins.editor.txt.html(this.form.content ? this.form.content : '');
+                    this.ins.editor.txt.html(content);
                 });
             }
         } ,
