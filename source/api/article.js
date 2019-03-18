@@ -3,6 +3,7 @@ const detail = `${topContext.api}Article/detail`;
 const edit = `${topContext.api}Article/edit`;
 const add = `${topContext.api}Article/add`;
 const saveImage = `${topContext.api}Article/saveImage`;
+const capture = `${topContext.api}Article/captureForJHData`;
 
 export default {
     // 文章分类列表
@@ -53,6 +54,17 @@ export default {
     saveImage (data , success , error) {
         return G.ajax({
             url: saveImage ,
+            data ,
+            method: 'post' ,
+            success ,
+            error
+        });
+    } ,
+
+    // 抓取
+    capture (data , success , error) {
+        return G.ajax({
+            url: capture ,
             data ,
             method: 'post' ,
             success ,

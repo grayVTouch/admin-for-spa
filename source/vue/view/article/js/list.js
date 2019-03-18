@@ -15,7 +15,8 @@ export default {
             ins: {} ,
             idList: [] ,
             api: articleApi ,
-            dom: {}
+            dom: {} ,
+            type: ['头条' , '社会' , '国内' , '国际' , '娱乐' , '体育' , '军事' , '科技' , '财经' , '时尚']
         };
     } ,
     mounted () {
@@ -178,6 +179,33 @@ export default {
                 return ;
             }
             this.idList.splice(index , 1);
+        } ,
+        // 抓取文章
+        capture () {
+            let option = {
+                btn: [...this.type , '取消'] ,
+            };
+            for (let i = 0; i < this.type.length; ++i)
+            {
+                let cur = this.type[i];
+                option['btn' + i + 1] = (index) => {
+                    layer.close(index);
+                    this.api.capture({
+                        type: cur
+                    } , (res) => {
+                        if (res.code != 200) {
+                            this.$error(res.data);
+                            return ;
+                        }
+                        let data = res.data;
+                        let msg = `总记录数：${data.total}\n成功记录数：${data.success}\n失败记录数：${data.error}\n重复记录数：${data.repeat}`;
+                    });
+                };
+            }
+            option[this.type.length + 1] = (index) => {
+                layer.close(index);
+            };
+            layer.alert('请选择要抓取的文章类型' , btn);
         } ,
     } ,
 }
