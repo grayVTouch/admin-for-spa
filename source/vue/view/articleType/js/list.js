@@ -62,7 +62,7 @@ export default {
             this.submit();
         } ,
         // 删除选中项
-        del (idList) {
+        del (idList , fn) {
             if (idList.length < 1) {
                 this.$error('您尚未选择待删除的项！');
                 return ;
@@ -82,9 +82,11 @@ export default {
                         this.$error(res.data);
                         return ;
                     }
-                    this.idList = [];
                     this.$success('删除成功');
                     this.getData();
+                    if (G.isFunction(fn)) {
+                        fn();
+                    }
                 });
             };
             layer.alert('如果删除，将会连同子类一起删除，你确定删除吗？' , {
@@ -101,12 +103,15 @@ export default {
 
         // 删除选中项
         delTarget (id) {
-            this.del([id]);
+            this.del([id] , () => {
+                this.delId(id);
+            });
         } ,
 
-        // 删除所有
         delSelected () {
-            this.del(this.idList);
+            this.del(this.idList , () => {
+                this.idList = [];
+            });
         } ,
 
         // 选择事件

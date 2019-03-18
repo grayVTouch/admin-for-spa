@@ -61,8 +61,9 @@ export default {
         reset () {
             this.submit();
         } ,
+
         // 删除选中项
-        del () {
+        del (idList , fn) {
             if (this.idList.length < 1) {
                 this.$error('您尚未选择待删除的项！');
                 return ;
@@ -81,16 +82,25 @@ export default {
                     this.$error(res.data);
                     return ;
                 }
-                this.idList = [];
                 this.$success('删除成功');
                 this.getData();
+                if (G.isFunction(fn)) {
+                    fn();
+                }
             });
         } ,
 
         // 删除选中项
         delTarget (id) {
-            this.addId(id);
-            this.del();
+            this.del([id] , () => {
+                this.delId(id);
+            });
+        } ,
+
+        delSelected () {
+            this.del(this.idList , () => {
+                this.idList = [];
+            });
         } ,
 
         // 选择事件

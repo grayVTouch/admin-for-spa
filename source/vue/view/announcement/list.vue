@@ -29,7 +29,7 @@
                     <div class="component-title">
                         <div class="left">数据列表</div>
                         <div class="right">
-                            <button type="button" class="btn-1" @click="del">删除选中项</button>
+                            <button type="button" class="btn-1" @click="delSelected">删除选中项</button>
                             <button type="button" class="btn-1" @click="location('/announcement/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>

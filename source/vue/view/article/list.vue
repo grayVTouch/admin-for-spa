@@ -27,7 +27,10 @@
             <div class="list">
                 <div class="data">
                     <div class="component-title">
-                        <div class="left">数据列表</div>
+                        <div class="left">
+                            数据列表
+                            <button type="button" class="btn-1" @click="delSelected">抓取聚合数据最新文章</button>
+                        </div>
                         <div class="right">
                             <button type="button" class="btn-1" @click="delSelected">删除选中项</button>
                             <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
@@ -45,8 +48,7 @@
                             <th class="th-name">分类</th>
                             <th class="th-weight">权重</th>
                             <th class="th-status">是否隐藏</th>
-                            <th class="th-time">创建时间</th>
-                            <th class="th-time">更新时间</th>
+                            <th class="th-time">时间</th>
                             <th class="th-opr">操作</th>
                         </tr>
                         </thead>
@@ -65,16 +67,18 @@
                             <td>{{ v.source }}</td>
                             <td>{{ v.article_type ? v.article_type.name : '无' }}</td>
                             <td>{{ v.weight }}</td>
-                            <td :class="v.hidden ? 'red' : 'green'">{{ v.hidden_explain }}</td>
-                            <td>{{ v.create_time }}</td>
-                            <td>{{ v.update_time }}</td>
+                            <td :class="v.hidden == 'y' ? 'red' : 'green'">{{ v.hidden_explain }}</td>
+                            <td class="multiple-rows">
+                                <div class="row">【创建时间】{{ v.create_time }}</div>
+                                <div class="row">【更新时间】{{ v.update_time }}</div>
+                            </td>
                             <td>
                                 <button type="button" class="btn-1" @click="location('/article/edit' , {id: v.id , mode: 'edit'})">编辑</button>
                                 <button type="button" class="btn-1" @click="delTarget(v.id)">删除</button>
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="6">没有相关数据</td>
+                            <td colspan="9">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>
