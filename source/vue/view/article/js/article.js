@@ -4,6 +4,7 @@ export default {
         return {
             form: {
                 weight: 0 ,
+                hidden: 0 ,
             } ,
             isRunning: false ,
             error: {} ,
@@ -29,20 +30,6 @@ export default {
             let data = res.data;
             this.type = G.t.childrens(0 , data , this.field , false , true);
         });
-
-        // 检查时编辑
-        if (this.param.mode == 'edit') {
-            // 获取当前正在编辑的文章分类
-            this.api.detail({
-                id: this.param.id
-            } , (res) => {
-                if (res.code != 200) {
-                    return this.$msg(res.data);
-                }
-                let data = res.data;
-                this.form = data;
-            });
-        }
     } ,
     mounted () {
         let self = this;
@@ -64,8 +51,38 @@ export default {
                 }
             }
         });
+
+        // 初始化
+        this.initialize();
     } ,
     methods: {
+        getData () {
+            // 检查时编辑
+            if (this.param.mode == 'edit') {
+                // 获取当前正在编辑的文章分类
+                this.api.detail({
+                    id: this.param.id
+                } , (res) => {
+                    if (res.code != 200) {
+                        return this.$msg(res.data);
+                    }
+                    let data = res.data;
+                    this.form = data;
+                    this.ins.editor.txt.html(this.form.content ? this.form.content.content : '');
+                });
+            }
+        } ,
+        initialize () {
+            this.initEditor();
+            this.getData();
+        } ,
+        initEditor() {
+            this.ins.editor = new wangEditor(this.$refs.editor);
+            // this.ins.editor.customConfig.uploadImgShowBase64 = true;
+            this.ins.editor.customConfig.uploadImgServer = topContext.imageApiForwangEditor;
+            this.ins.editor.customConfig.uploadFileName = 'image';
+            this.ins.editor.create();
+        } ,
         check (data) {
             return {
                 status: true ,

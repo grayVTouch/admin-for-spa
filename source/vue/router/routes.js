@@ -38,6 +38,7 @@ export default [
         component: listForRoute
     } ,
 
+    // 文章分类
     {
         path: '/articleType/list' ,
         component: listForArticleType

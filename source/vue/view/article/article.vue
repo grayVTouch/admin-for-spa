@@ -5,7 +5,7 @@
             <form @submit.prevent="submit">
                 <table class="input-tb">
                     <tbody>
-                        <tr id="name" :class="getClass(error.title)">
+                        <tr id="title" :class="getClass(error.title)">
                             <td>标题</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.title">
@@ -19,10 +19,11 @@
                             <td>
                                 <v-select class="form-select" v-model="form.article_type_id" :data="type" :hasTop="false" ></v-select>
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.article_type_id }}</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.article_type_id }}</span>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="thumb" :class="getClass(error.thumb)">
                             <td>封面</td>
                             <td ref="image-container">
                                 <div class='upload-image'>
@@ -72,12 +73,31 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr id="content" :class="getClass(error.content)">
+                            <td>内容</td>
+                            <td>
+                                <div ref="editor"></div>
+                                <span class="necessary">*</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.content }}</span>
+                            </td>
+                        </tr>
+                        <tr id="source" :class="getClass(error.source)">
+                            <td>来源</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.source">
+                                <span class="necessary"></span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.source }}</span>
+                            </td>
+                        </tr>
                         <tr id="weight" :class="getClass(error.weight)">
                             <td>权重</td>
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
+                                <span class="tip">默认：0</span>
+                                <span class="msg">{{ error.weight }}</span>
                             </td>
                         </tr>
                         <tr id="hidden">
@@ -88,8 +108,9 @@
                                         <span>{{ v }}</span>
                                     </radio>
                                 </radio-group>
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
+                                <span class="necessary"></span>
+                                <span class="tip">默认：否</span>
+                                <span class="msg">{{ error.weight }}</span>
                             </td>
                         </tr>
                         <tr>

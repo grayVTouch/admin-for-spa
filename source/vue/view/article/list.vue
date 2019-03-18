@@ -33,7 +33,7 @@
                         </div>
                         <div class="right">
                             <button type="button" class="btn-1" @click="delSelected">删除选中项</button>
-                            <button type="button" class="btn-1" @click="location('/articleType/add' , {mode: 'add'})">添加</button>
+                            <button type="button" class="btn-1" @click="location('/article/add' , {mode: 'add'})">添加</button>
                         </div>
                     </div>
                     <table class="line-tb">
@@ -44,9 +44,8 @@
                             </th>
                             <th class="th-id">ID</th>
                             <th class="th-name">标题</th>
-                            <th class="th-name">来源</th>
                             <th class="th-name">分类</th>
-                            <th class="th-weight">权重</th>
+                            <th class="th-weight">信息</th>
                             <th class="th-status">是否隐藏</th>
                             <th class="th-time">时间</th>
                             <th class="th-opr">操作</th>
@@ -64,9 +63,11 @@
                                 </div>
                             </td>
                             <td>{{ v.title }}</td>
-                            <td>{{ v.source }}</td>
                             <td>{{ v.article_type ? v.article_type.name : '无' }}</td>
-                            <td>{{ v.weight }}</td>
+                            <td class="multiple-rows">
+                                <div class="row"><b>来源</b>{{ v.source }}</div>
+                                <div class="row"><b>【权重】</b>{{ v.weight }}</div>
+                            </td>
                             <td :class="v.hidden == 'y' ? 'red' : 'green'">{{ v.hidden_explain }}</td>
                             <td class="multiple-rows">
                                 <div class="row">【创建时间】{{ v.create_time }}</div>
