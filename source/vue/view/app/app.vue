@@ -10,11 +10,12 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.name">
                                 <span class="necessary">*</span>
-                                <span class="tip">{{ error.name }}</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.name }}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td>封面/td>
+                            <td>封面</td>
                             <td ref="image-container">
                                 <div class='upload-image'>
                                     <div class='select-images'>
@@ -68,7 +69,7 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.ios_link">
                                 <span class="necessary"></span>
-                                <span class="tip">{{ error.ios_link }}</span>
+                                <span class="msg">{{ error.ios_link }}</span>
                             </td>
                         </tr>
                         <tr id="android_link" :class="getClass(error.android_link)">
@@ -76,7 +77,7 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.android_link">
                                 <span class="necessary"></span>
-                                <span class="tip">{{ error.android_link }}</span>
+                                <span class="msg">{{ error.android_link }}</span>
                             </td>
                         </tr>
                         <tr id="ios_wakeup_link" :class="getClass(error.ios_wakeup_link)">
@@ -84,7 +85,7 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.ios_wakeup_link">
                                 <span class="necessary"></span>
-                                <span class="tip">{{ error.ios_wakeup_link }}</span>
+                                <span class="msg">{{ error.ios_wakeup_link }}</span>
                             </td>
                         </tr>
                         <tr id="android_wakeup_link" :class="getClass(error.android_wakeup_link)">
@@ -92,7 +93,7 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.android_wakeup_link">
                                 <span class="necessary"></span>
-                                <span class="tip">{{ error.android_wakeup_link }}</span>
+                                <span class="msg">{{ error.android_wakeup_link }}</span>
                             </td>
                         </tr>
                         <tr id="link" :class="getClass(error.link)">
@@ -100,7 +101,7 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.link">
                                 <span class="necessary"></span>
-                                <span class="tip">{{ error.link }}</span>
+                                <span class="msg">{{ error.link }}</span>
                             </td>
                         </tr>
 
@@ -112,8 +113,8 @@
                                         <span>{{ v }}</span>
                                     </radio>
                                 </radio-group>
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.is_app }}</span>
+                                <span class="necessary"></span>
+                                <span class="msg">{{ error.is_app }}</span>
                             </td>
                         </tr>
 
@@ -121,8 +122,9 @@
                             <td>权重</td>
                             <td>
                                 <input type="number" step="0" class="form-text" v-model="form.weight">
-                                <span class="necessary">*</span>
-                                <span class="tip">{{ error.weight }}</span>
+                                <span class="necessary"></span>
+                                <span class="tip">默认：0，仅允许整数</span>
+                                <span class="msg">{{ error.weight }}</span>
                             </td>
                         </tr>
                         <tr>

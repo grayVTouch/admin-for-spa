@@ -10,6 +10,7 @@ export default {
             // 错误消息
             error: {} ,
             ins: {} ,
+            api: appApi ,
             callback: {
                 image: null
             }
@@ -19,7 +20,7 @@ export default {
         // 检查时编辑
         if (this.param.mode == 'edit') {
             // 获取当前正在编辑的文章分类
-            appApi.detail({
+            this.api.detail({
                 id: this.param.id
             } , (res) => {
                 if (res.code != 200) {
@@ -75,7 +76,7 @@ export default {
             let self = this;
             new Promise((resolve , reject) => {
                 // 上传基本数据
-                appApi[this.param.mode](this.form , (res) => {
+                this.api[this.param.mode](this.form , (res) => {
                     this.isRunning = false;
                     this.ins.loading.hide();
                     if (res.code == 400) {
@@ -114,7 +115,7 @@ export default {
                     }
                     let data = res.data;
                     // 更新
-                    appApi.saveImage({
+                    this.api.saveImage({
                         id: this.form.id ,
                         image: data.url
                     } , resolve);
