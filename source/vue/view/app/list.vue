@@ -42,8 +42,7 @@
                             <th class="th-id">ID</th>
                             <th class="th-name">名称</th>
                             <th class="th-name">链接</th>
-                            <th class="th-status">是否应用？</th>
-                            <th class="th-weight">权重</th>
+                            <th class="th-status">信息</th>
                             <th class="th-time">创建时间</th>
                             <th class="th-opr">操作</th>
                         </tr>
@@ -59,14 +58,16 @@
                             </td>
                             <td>{{ v.name }}</td>
                             <td class="multiple-rows">
-                                <div class="row">【ios 链接】{{ v.ios_link }}</div>
-                                <div class="row">【android 链接】{{ v.android_link }}</div>
-                                <div class="row">【ios 唤醒链接】{{ v.ios_wakeup_link }}</div>
-                                <div class="row">【android 唤醒链接】{{ v.android_wakeup_link }}</div>
-                                <div class="row">【外部链接】{{ v.link }}</div>
+                                <div class="row"><b>【ios 链接】</b><a :href="v.ios_link" target="_blank" :title="v.ios_link">{{ v.ios_link }}</a></div>
+                                <div class="row"><b>【android 链接】</b><a :href="v.android_link" target="_blank" :title="v.android_link">{{ v.android_link }}</a></div>
+                                <div class="row"><b>【ios 唤醒链接】</b><a :href="v.ios_wakeup_link" target="_blank" :title="v.ios_wakeup_link">{{ v.ios_wakeup_link }}</a></div>
+                                <div class="row"><b>【android 唤醒链接】</b><a :href="v.android_wakeup_link" target="_blank" :title="v.android_wakeup_link">{{ v.android_wakeup_link }}</a></div>
+                                <div class="row"><b>【外部链接】</b><a :href="v.link" target="_blank" :title="v.link">{{ v.link }}</a></div>
                             </td>
-                            <td>{{ v.is_app }}</td>
-                            <td>{{ v.weight }}</td>
+                            <td class="multiple-rows">
+                                <div class="row"><b>【是否应用】</b>{{ v.is_app }}</div>
+                                <div class="row"><b>【权重】</b>{{ v.weight }}</div>
+                            </td>
                             <td>{{ v.create_time }}</td>
                             <td>
                                 <button type="button" class="btn-1" @click="location('/app/edit' , {id: v.id , mode: 'edit'})">编辑</button>
@@ -74,7 +75,7 @@
                             </td>
                         </tr>
                         <tr v-if="data.length == 0">
-                            <td colspan="8">没有相关数据</td>
+                            <td colspan="7">没有相关数据</td>
                         </tr>
                         </tbody>
                     </table>
